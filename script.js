@@ -23,7 +23,7 @@ $(".localHubbleViewBtn").on("click", function(){
 });
 
 });
-=======
+
 // $(document).ready(function(){
 //      // AJAX call
 //      $.ajax({
