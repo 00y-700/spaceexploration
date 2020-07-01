@@ -3,9 +3,9 @@ $(document).ready(function(){
      $.ajax({
         url: "https://api.nasa.gov/planetary/apod?api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ",
         method: "GET"
-      }).then(function({url}) {
-        console.log(url)
+      }).then(function(response) {
+        console.log(response)
         const header = document.querySelector("#apod");
-        header.setAttribute("style", `background-image:  url(${url}); background-position: center; background-repeat: no-repeat; background-size: cover;`);
+        header.setAttribute("style", `background-image:  url(${response.url}); background-position: center; background-repeat: no-repeat; background-size: cover;`);
       });
 })
