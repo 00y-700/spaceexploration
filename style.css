@@ -23,6 +23,16 @@ nav{
     
 }
 
+.mainBlock-Contents{
+    background-color: rgb(255, 248, 206);
+    /* width: 35%px; */
+    margin-top: 15px;
+}
+
+/* .col s12 m8 l9{
+    width: 75%;
+} */
+
 /* Styling - APOD */
 
 
