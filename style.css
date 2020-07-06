@@ -1,26 +1,35 @@
 /* Common Styling - index.html */
-nav{
+/* nav{
     text-decoration: none;
-}
+} */
 
 .parallax-container{
     height:350px;
   
 }
 
-.waves-effect{
+/* .waves-effect{
     display:block;
     margin:15px;
     padding: 5px 8px;
     width:90%;
-}
+} */
+
+/* .nav-wrapper{
+    width:100%;
+} */
 
 .side-block {
-  
-    margin-top: 35px;
-    margin-left: 35px;
     width:100%;
-    
+    display:flex;
+    margin-left:25px;
+     
+}
+
+.btn{
+    width:200px;
+    height:50px;
+    padding: 15px; 
 }
 
 .mainBlock-Contents{
@@ -59,7 +68,7 @@ a:hover {
 
 
 /* Common Media Queries - index.html */
-@media screen and (max-width: 873px) {
+/* @media screen and (max-width: 873px) {
     .side-block {      
         width: 80%;
     }
@@ -74,28 +83,11 @@ a:hover {
 
 }
 
-@media screen and (max-width: 600px) {
-    /* .side-block a.active {
-   
-        .btn{display: none}
-       } */
-/* 
-       :has-property-value('active') {
-        .side-block{display: none};
-     } */
-    }
-
-
 
 @media screen and (max-width: 420px) {
     .side-block {      
         width: 75%;
     }
-
-    .waves-effect{
-        width: 100%;
-    }
-
-    
-}
+  
+} */
 

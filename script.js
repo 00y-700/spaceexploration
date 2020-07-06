@@ -1,6 +1,7 @@
 var spaceMission = $(".spaceMission");
 var title= $(".title");
 
+
     $.ajax({
         url: "https://api.nasa.gov/planetary/apod?api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ",	        
         method: "GET"	     
@@ -11,36 +12,43 @@ var title= $(".title");
 
 // APOD Button Click
 $(document).ready(function () {
-    $(".apodBtn").on("click", function(){
+
+    
+   $('.sidenav').sidenav();
+   $(".apodBtn").on("click",function (event) {
+    event.preventDefault();
     $(".mainBlock-Contents").empty();
     $(".apod").text("About APOD");
 });
 
 // Local Hubble View Button Click
-$(".localHubbleViewBtn").on("click", function(){
+$(".localHubbleViewBtn").on("click", function(event){
+    event.preventDefault();
     $(".mainBlock-Contents").empty();
     $(".localHubbleView").text("Local Sky View");
 });
 
 // Near Earth Objects
-$(".newEarthObjectsBtn").on("click", function(){
-    
+$(".newEarthObjectsBtn").on("click", function(event){
+    event.preventDefault();
     $(".mainBlock-Contents").empty();
     $(".nearEarthObjects").text("Near Earth Objects");
     
 });
 
 // Mars Weather
-$(".marsWeatherBtn").on("click", function(){
-  
+$(".marsWeatherBtn").on("click", function(event){
+    event.preventDefault();
     $(".mainBlock-Contents").empty();
     $(".marsWeather").text("Mars Weather");
     
 });
 
 // Space Mission (Started Working - Yakini)
-$(".spaceMissionBtn").on("click", function(){
+$(".spaceMissionBtn").on("click",function(event){
+    console.log("Got click");
    
+   event.preventDefault();
     $(".mainBlock-Contents").empty();
     var h3 = $("<h3 style='font-size: 22px; font-weight: bold;background-color: rgb(196, 187, 140); padding:15px'>");
     h3.text("Space Mission");
@@ -68,7 +76,8 @@ $(".spaceMissionBtn").on("click", function(){
 });
 
 // Space Information
-$(".spaceInfoBtn").on("click", function(){
+$(".spaceInfoBtn").on("click", function(event){
+    event,preventDefault();
     // $(".main-block").empty();
     // $(".mainBlock-Title").empty();
     $(".mainBlock-Contents").empty(); 
@@ -77,7 +86,8 @@ $(".spaceInfoBtn").on("click", function(){
 });
 });
 
-$(document).on("click", 'div a', function(){
+$(document).on("click", 'ul a', function(event){
+    event.preventDefault();
     // $(".main-block").empty();
    //  $(".mainBlock-Title").empty();
    // $(".mainBlock-Contents").empty();
@@ -98,3 +108,4 @@ $(document).on("click", 'div a', function(){
     }
   
 });
+
