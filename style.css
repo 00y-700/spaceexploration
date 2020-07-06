@@ -20,13 +20,13 @@
 } */
 
 .side-block {
-    width:100%;
+    
     display:flex;
     margin-left:25px;
      
 }
 
-.btn{
+.Btn{
     width:200px;
     height:50px;
     padding: 15px; 
@@ -48,7 +48,7 @@ a:hover {
 }
 
 .side-block a.active {
-    background-color:#0a413b;
+    color:#0a413b;
  
 }
 
@@ -68,22 +68,28 @@ a:hover {
 
 
 /* Common Media Queries - index.html */
-/* @media screen and (max-width: 873px) {
-    .side-block {      
-        width: 80%;
+@media screen and (max-width: 1173px) and (min-width: 1060px){
+    .Btn {      
+        width:175px;;
+    }
+
+}
+
+@media screen and (max-width: 1060px) and (min-width: 1046px){
+    .Btn  {      
+        width: 150px;
     }
 
 }
 
 
-@media screen and (max-width: 773px) {
-    .side-block {      
-        width: 95%;
+@media screen and (max-width: 1044px) and (min-width: 993px){
+    .Btn  {      
+        width: 148px;
     }
 
 }
-
-
+/*
 @media screen and (max-width: 420px) {
     .side-block {      
         width: 75%;
