@@ -89,11 +89,16 @@ a:hover {
     }
 
 }
-/*
-@media screen and (max-width: 420px) {
-    .side-block {      
-        width: 75%;
+
+@media screen and  (max-width: 780px) and (min-width: 600px) {
+    .mainBlock-Contents{
+        width:93%;
     }
-  
-} */
+}
+
+@media screen and  (max-width: 599px) {
+    .mainBlock-Contents{
+        width:89%;
+    }
+}
 
