@@ -1,4 +1,6 @@
 var spaceMission = $(".spaceMission");
+var title= $(".title");
+
     $.ajax({
         url: "https://api.nasa.gov/planetary/apod?api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ",	        
         method: "GET"	     
@@ -10,21 +12,19 @@ var spaceMission = $(".spaceMission");
 // APOD Button Click
 $(document).ready(function () {
     $(".apodBtn").on("click", function(){
-
     $(".mainBlock-Contents").empty();
     $(".apod").text("About APOD");
 });
 
 // Local Hubble View Button Click
 $(".localHubbleViewBtn").on("click", function(){
-   
     $(".mainBlock-Contents").empty();
     $(".localHubbleView").text("Local Sky View");
 });
 
 // Near Earth Objects
 $(".newEarthObjectsBtn").on("click", function(){
-   
+    
     $(".mainBlock-Contents").empty();
     $(".nearEarthObjects").text("Near Earth Objects");
     
@@ -32,7 +32,7 @@ $(".newEarthObjectsBtn").on("click", function(){
 
 // Mars Weather
 $(".marsWeatherBtn").on("click", function(){
-   
+  
     $(".mainBlock-Contents").empty();
     $(".marsWeather").text("Mars Weather");
     
@@ -42,46 +42,20 @@ $(".marsWeatherBtn").on("click", function(){
 $(".spaceMissionBtn").on("click", function(){
    
     $(".mainBlock-Contents").empty();
-    spaceMission.text("Space Mission");
+    var h3 = $("<h3 style='font-size: 22px; font-weight: bold;background-color: rgb(196, 187, 140); padding:15px'>");
+    h3.text("Space Mission");
+    spaceMission.append(h3);
     var spaceMissionDetails = $("<p class = details>").text("NASA has successfully launched over 200 crewed flights. Two have ended in failure, STS-51-L (the Challenger disaster) in 1986, and STS-107 (the Columbia disaster) in 2003. (Apollo 1 in 1967 lost three crew members but never launched.)");
     
     var table= $("<table><thead><tr><th>Program</th><th>Start Date</th><th>End Date</th><th>No. of launched crewed missions</th><th>Notes</th> </tr> </thead> ");
     var tableContents1 = $("<tbody><tr><td>Mercury Program</td><td>1959</td><td>1963</td><td>6</td><td>First U.S. crewed program</td> </tr>");
-    var tableContents2 = $("<tr><td>Mercury Program</td><td>1959</td><td>1963</td><td>6</td><td>First U.S. crewed program</td> </tr>");
-    var tableContents3 = $("<tr><td>Mercury Program</td><td>1959</td><td>1963</td><td>6</td><td>First U.S. crewed program</td> </tr>");
-    var tableContents4 = $("<tr><td>Mercury Program</td><td>1959</td><td>1963</td><td>6</td><td>First U.S. crewed program</td> </tr>");
-    var tableContents5 = $("<tr><td>Mercury Program</td><td>1959</td><td>1963</td><td>6</td><td>First U.S. crewed program</td> </tr>");
-    var tableContents6 = $("<tr><td>Mercury Program</td><td>1959</td><td>1963</td><td>6</td><td>First U.S. crewed program</td> </tr>");
-    var tableContents7 = $("<tr><td>Mercury Program</td><td>1959</td><td>1963</td><td>6</td><td>First U.S. crewed program</td> </tr> </tbody> </table>");
+    var tableContents2 = $("<tr><td>Gemini Program</td><td>1963</td><td>1966</td><td>10</td><td>Program used to practice space rendezvous and EVAs</td> </tr>");
+    var tableContents3 = $("<tr><td>Apollo Program</td><td>1961</td><td>1972</td><td>11</td><td>Brought first human to the Moon</td> </tr>");
+    var tableContents4 = $("<tr><td>Skylab</td><td>1973</td><td>1974</td><td>3</td><td>first American space station</td> </tr>");
+    var tableContents5 = $("<tr><td>Space Shuttle</td><td>1981</td><td>2011</td><td>135</td><td>First missions in which a spacecraft was reused</td> </tr>");
+    var tableContents6 = $("<tr><td>International Space Station</td><td>1998</td><td>Ongoing</td><td>54</td><td>Joint with Roscosmos, CSA, ESA, and JAXA</td> </tr>");
+    var tableContents7 = $("<tr><td>Artemis program</td><td>2017</td><td>Ongoing</td><td>0</td><td>Current program to bring humans to the Moon again</td> </tr> </tbody> </table>");
 
-    //     <table>
-//     <thead>
-//       <tr>
-//           <th>Name</th>
-//           <th>Item Name</th>
-//           <th>Item Price</th>
-//       </tr>
-//     </thead>
-
-//     <tbody>
-//       <tr>
-//         <td>Alvin</td>
-//         <td>Eclair</td>
-//         <td>$0.87</td>
-//       </tr>
-//       <tr>
-//         <td>Alan</td>
-//         <td>Jellybean</td>
-//         <td>$3.76</td>
-//       </tr>
-//       <tr>
-//         <td>Jonathan</td>
-//         <td>Lollipop</td>
-//         <td>$7.00</td>
-//       </tr>
-//     </tbody>
-//   </table>
-    
     spaceMission.append(spaceMissionDetails);
     table.append(tableContents1);
     table.append(tableContents2);
@@ -95,24 +69,32 @@ $(".spaceMissionBtn").on("click", function(){
 
 // Space Information
 $(".spaceInfoBtn").on("click", function(){
-   
-    $(".mainBlock-Contents").empty();
+    // $(".main-block").empty();
+    // $(".mainBlock-Title").empty();
+    $(".mainBlock-Contents").empty(); 
     $(".spaceInfo").text("Space Information");
 
 });
-
-
 });
 
-// $(document).ready(function(){
-//      // AJAX call
-//      $.ajax({
-//         url: "https://api.nasa.gov/planetary/apod?api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ",
-//         method: "GET"
-//       }).then(function(response) {
-//         console.log(response)
-//         const header = document.querySelector("#apod");
-//         header.setAttribute("style", `background-image:  url(${response.url}); background-position: center; background-repeat: no-repeat; background-size: cover;`);
-//       });
-// })
+$(document).on("click", 'div a', function(){
+    // $(".main-block").empty();
+   //  $(".mainBlock-Title").empty();
+   // $(".mainBlock-Contents").empty();
+   $('div a').removeClass('active');
+   $(this).addClass('active');
 
+//    const mq1 = window.matchMedia( "(max-width: 600px)" );
+   const mq = window.matchMedia( "(max-width: 600px)" );
+
+   if(mq.matches){
+        if($('div a').hasClass('active')){
+            $(".side-block").empty();
+        }
+    // }else{
+    //     if($('div a').hasClass('active')){
+    //         $(".side-block");
+    //     }
+    }
+  
+});

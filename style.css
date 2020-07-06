@@ -5,6 +5,7 @@ nav{
 
 .parallax-container{
     height:350px;
+  
 }
 
 .waves-effect{
@@ -15,8 +16,7 @@ nav{
 }
 
 .side-block {
-    /* border: 1px solid black;
-    background-color: rgb(224, 214, 214); */
+  
     margin-top: 35px;
     margin-left: 35px;
     width:100%;
@@ -25,13 +25,23 @@ nav{
 
 .mainBlock-Contents{
     background-color: rgb(255, 248, 206);
-    /* width: 35%px; */
+    width: 96%;
     margin-top: 15px;
+    margin-left: 20px;
 }
 
-/* .col s12 m8 l9{
-    width: 75%;
-} */
+a{
+    color:#000;
+    text-decoration:none;
+}
+a:hover {
+    text-decoration:underline;
+}
+
+.side-block a.active {
+    background-color:#0a413b;
+ 
+}
 
 /* Styling - APOD */
 
@@ -63,6 +73,19 @@ nav{
     }
 
 }
+
+@media screen and (max-width: 600px) {
+    /* .side-block a.active {
+   
+        .btn{display: none}
+       } */
+/* 
+       :has-property-value('active') {
+        .side-block{display: none};
+     } */
+    }
+
+
 
 @media screen and (max-width: 420px) {
     .side-block {      
