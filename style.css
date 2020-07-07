@@ -8,6 +8,27 @@
   
 }
 
+ /* input[type=text]:not(.browser-default){ 
+    width: 600px;
+    float:right;
+   
+   
+ } 
+.search{
+    float:right;
+    /* margin-right: -570px; */
+    
+    form{
+        width:400px;
+        float: right;
+        margin-top: -85px; 
+    }
+
+    /* .material-icons{
+        margin-bottom: -15px;
+        /* margin-left: 340px; */
+   /* } */
+
 /* .waves-effect{
     display:block;
     margin:15px;
@@ -26,12 +47,21 @@
      
 }
 
+
 .Btn{
     width:200px;
     height:50px;
-    padding: 15px; 
+    /* padding: 15px;  */
+    text-align: center;
 }
 
+.homeBtn{
+    width:15px;
+}
+
+.nav-wrapper{
+    background-color: rgb(49, 48, 48);
+}
 .mainBlock-Contents{
     background-color: rgb(255, 248, 206);
     width: 96%;
@@ -48,7 +78,7 @@ a:hover {
 }
 
 .side-block a.active {
-    color:#0a413b;
+    color:#cc70ad;
  
 }
 
@@ -68,27 +98,50 @@ a:hover {
 
 
 /* Common Media Queries - index.html */
-@media screen and (max-width: 1173px) and (min-width: 1060px){
+@media screen and (max-width: 1251px) and (min-width: 1120px){
     .Btn {      
-        width:175px;;
+        width:175px;
+    }
+
+    .homeBtn{
+        width:15px;
     }
 
 }
 
-@media screen and (max-width: 1060px) and (min-width: 1046px){
+@media screen and (max-width: 1119px) and (min-width: 1046px){
     .Btn  {      
-        width: 150px;
+        width: 165px;
+        font-size: 12px;
+    }
+
+    .homeBtn{
+        width:15px;
     }
 
 }
 
 
-@media screen and (max-width: 1044px) and (min-width: 993px){
+@media screen and (max-width: 1045px) and (min-width: 993px){
     .Btn  {      
-        width: 148px;
+        width: 148px; 
+        font-size: 12px;
+    }
+
+    .homeBtn{
+        width:15px;
+    }
+
     }
 
 }
+
+/* @media screen and  (max-width: 800px) {
+   form{
+        width:100%;
+        margin-top: -25px; 
+    }
+} */
 
 @media screen and  (max-width: 780px) and (min-width: 600px) {
     .mainBlock-Contents{
@@ -102,3 +155,10 @@ a:hover {
     }
 }
 
+ @media screen and  (max-width: 800px) {
+    form{
+         width:100%;
+         margin-top: -25px; 
+     }
+ }
+  

@@ -8,6 +8,10 @@
       <!-- Compiled and minified CSS -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
       <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!-- Compiled and minified JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,7 +31,7 @@
    <div class= "parallax-container">
     <!-- transform: translate3d(-50%, 213.983px, 0px); opacity: 1;   -->
        <div class = "parallax">
-         <img  id="apod" style="transform: translate3d(-50%, 213.983px, 0px); opacity: 1;"/>    </div>
+         <img  id="apod" src="https://api.nasa.gov/planetary/apod/static/default_apod_image.jpg" style="transform: translate3d(-50%, 213.983px, 0px); opacity: 1;"/>    </div>
        <div class = "container"><br>
         <br>
          <h2 class="header center teal-text text-lighten-2">Explore Space</h2>
@@ -63,7 +67,10 @@
               <a href="#!" class="brand-logo"></a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
               <ul class="left hide-on-med-and-down side-block container">
-               <li> <a class="apodBtn Btn">About APOD</a></li>
+
+              <li> <a class="homeBtn Btn"><i class="material-icons">home</i></a></li>
+
+              <li> <a class="apodBtn Btn">About APOD</a></li>
 
               <li><a class="localHubbleViewBtn Btn">Local Hubble View</a></li>
 
@@ -80,6 +87,9 @@
           </nav>
         
           <ul class="sidenav" id="mobile-demo">
+
+            <li> <a class="homeBtn Btn"><i class="material-icons">home</i></a></li>
+            
             <li><a class="apodBtn Btn">About APOD</a></li>
 
             <li><a class="localHubbleViewBtn Btn">Local Hubble View</a></li>
