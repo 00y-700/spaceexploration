@@ -19,7 +19,7 @@ nav{
     background-color: rgb(224, 214, 214); */
     margin-top: 35px;
     margin-left: 35px;
-    width:50%;
+    width:100%;
     
 }
 
@@ -39,16 +39,24 @@ nav{
 
 
 /* Common Media Queries - index.html */
-@media screen and (max-width: 914px) {
+@media screen and (max-width: 873px) {
     .side-block {      
-        width: 70%;
+        width: 80%;
+    }
+
+}
+
+
+@media screen and (max-width: 773px) {
+    .side-block {      
+        width: 95%;
     }
 
 }
 
 @media screen and (max-width: 420px) {
     .side-block {      
-        width: 100%;
+        width: 75%;
     }
 
     .waves-effect{
