@@ -1,7 +1,7 @@
 var spaceMission = $(".spaceMission");
 var mainBlock = $(".main-block");
 var title= $(".title");
-
+var videoVal = 0;
 
 function homePage(){
     // var videoTitle;
@@ -38,48 +38,58 @@ function homePage(){
           console.log(response);
 
           for(var i = 0 ; i<6; i++){
-         
+        //   debugger
              var href= response.collection.items[i].href;
-             var title = response.collection.items[i].data[i].title;
-             console.log(href);
-             console.log("Title"+videoTitle[i]);
+             var title = response.collection.items[i].data[0].title;
+         
              hrefValue.push(href);
              videoTitle.push(title);
           }
+     
 
           console.log(hrefValue);
           console.log(videoTitle);
          
-        for(var j=0; j<6; j++){ 
-        $.ajax({
-        url: href[j],
-        success: function (response1) {
-        console.log(response1[j]);
+        for(var j=0; j<hrefValue.length; j++){ 
+        
+            $.ajax({
+            url: hrefValue[j],
+            success: function (response1) {
                 
-
-                    console.log(response1[j]);
-                    if(response1[j].matches("~orig.mp4")){
-                        console.log(response1[j]);
-
-                        var video = function (j) {
-                            console.log(videoTitle[j]);
-                            return ('<div class="video">' +
-                              '<p class="title">' + videoTitle[j] + '</p>' +
-                              '<img src=' +response1[j]+ 'width="50" height="50">' +
-                              '</div>');
-                          }
-                  
-                         divMain.append(video(j));
-                         mainBlock.append(divMain);
+                console.log(typeof response1);
+                var finalResponse = JSON.stringify(response1);
+                // console.log("Without Stringify" +response1);
+                // console.log("finalResponse[j]" +finalResponse);
+                
+              for(var k=0; k<10; k++){
+            //  debugger
+                if(response1[k].endsWith("~orig.mp4")){
+                console.log("Wow I'm inside"); 
+                console.log("finalResponse[j]" +response1[k]);
+                videoVal++;
+                // debugger
+              
+                var video = function (k) {
+                    var title= videoTitle[videoVal-1];
+                    return ('<div class="video">' +
+                        '<p class="title-video">' + videoTitle[videoVal-1] + '</p>' +
+                        '<img src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" >' +
+                        '</div>');
                     }
+                    
+                    divMain.append(video(k));
+                    mainBlock.append(divMain);
+                   
                 }
+               
+                break;
+            }
+            }
             });
-    
         }
     }
 });
 });
-
 }
 
 
