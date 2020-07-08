@@ -138,7 +138,7 @@ $(".localHubbleViewBtn").on("click", function(event){
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
     
-    var hubbleView = $(".localHubbleView").text("Local Hubble View");
+    var hubbleView = $(".localHubbleView").text("Live Hubble View");
     var hubbleWindow = $("<div id=hubbleWindow>");
     var hubbleTitle = $("<div class='hubbleTitle'></div>");
     var hubbleImage = $("<img class='hubbleImage'>");
