@@ -169,6 +169,9 @@ function newQuote() {
   var randomNumber = Math.floor(Math.random() * (quotes.length));
   document.getElementById("quoteDisplay").innerHTML = quotes[randomNumber];
 }
+$("#quotebtn").on("click",function(event){
+  newQuote()
+})
 // $(document).ready(function(){
 //      // AJAX call
 //      $.ajax({
