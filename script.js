@@ -1,7 +1,7 @@
 var spaceMission = $(".spaceMission");
 var mainBlock = $(".main-block");
 var title= $(".title");
-
+var videoVal = 0;
 
 function homePage(){
     // var videoTitle;
@@ -11,13 +11,8 @@ function homePage(){
         var divMain = $("<div class='homePageContent'>")
         var homePageContent = $("<p class='homePageTitle' style='font-size: 20px; font-weight: bold; padding:10px'>");
         homePageContent.text("Top Stories");
-//         <div id="search">    
-//         <input type="text" style="margin-bottom:30px;" name="searchText">
-//         <button id="submitBtn" class="fa fa-search"></button>        
-//   </div>
         divMain.append(homePageContent);
-       
-        // h3.append(span);
+ 
         var div = $("<form>");
       
         var input = $("<input type='text'  id='search' name='Textsearch'>");
@@ -26,7 +21,7 @@ function homePage(){
         homePageContent.append(div);
         divMain.append(div);
         mainBlock.append(divMain);
-        // Grant CesiumJS access to your ion assets
+     
         var videoTitle=[];
         var hrefValue =[];
         var queryURL1 = "https://images-api.nasa.gov/search?q=Nasa Space Mission&media_type=video";
@@ -38,78 +33,57 @@ function homePage(){
           console.log(response);
 
           for(var i = 0 ; i<6; i++){
-         
+        //   debugger
              var href= response.collection.items[i].href;
-             var title = response.collection.items[i].data[i].title;
-             console.log(href);
-             console.log("Title"+videoTitle[i]);
+             var title = response.collection.items[i].data[0].title;
+         
              hrefValue.push(href);
              videoTitle.push(title);
           }
+     
 
           console.log(hrefValue);
           console.log(videoTitle);
          
-        for(var j=0; j<6; j++){ 
-        $.ajax({
-        url: href[j],
-        success: function (response1) {
-        console.log(response1[j]);
+        for(var j=0; j<hrefValue.length; j++){ 
+        
+            $.ajax({
+            url: hrefValue[j],
+            success: function (response1) {
                 
-
-                    console.log(response1[j]);
-                    if(response1[j].matches("~orig.mp4")){
-                        console.log(response1[j]);
-
-                        var video = function (j) {
-                            console.log(videoTitle[j]);
-                            return ('<div class="video">' +
-                              '<p class="title">' + videoTitle[j] + '</p>' +
-                              '<img src=' +response1[j]+ 'width="50" height="50">' +
-                              '</div>');
-                          }
-                  
-                         divMain.append(video(j));
-                         mainBlock.append(divMain);
+                console.log(typeof response1);
+                var finalResponse = JSON.stringify(response1);
+             
+              for(var k=0; k<10; k++){
+            //  debugger
+                if(response1[k].endsWith("~orig.mp4")){
+                console.log("Wow I'm inside"); 
+                console.log("finalResponse[j]" +response1[k]);
+                videoVal++;
+                // debugger
+              
+                var video = function (k) {
+                    var title= videoTitle[videoVal-1];
+                    return ('<div class="video">' +
+                        '<p class="title-video">' + videoTitle[videoVal-1] + '</p>' +
+                        '<img src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" >' +
+                        '</div>');
                     }
+                    
+                    divMain.append(video(k));
+                    mainBlock.append(divMain);
+                   
                 }
+               
+                break;
+            }
+            }
             });
-    
         }
     }
 });
 });
-
 }
-
-// AJAX call
-     $.ajax({
-        url: "https://api.nasa.gov/planetary/apod?api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ",
-        method: "GET"
-      }).then(function(response) {
-        console.log(response)
-        const header = document.querySelector("#apod");
-        header.setAttribute("style", `background-image:  url(${response.url}); background-position: center; background-repeat: no-repeat; background-size: cover;`);
-      });
-var quotes = [
-  "Just Do It -NIKE",
-  "Space, the final forntier. -Star Trek",
-  "The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever. -Konstantin Tsiolkovsky",
-  "I know the sky is not the limit because there are footprints on the Moon - and I made some of them -Buzz Alrdin",
-  "There is no sound in outer space",
-]
-function newQuote() {
-  var randomNumber = Math.floor(Math.random() * (quotes.length));
-  document.getElementById("quoteDisplay").innerHTML = quotes[randomNumber];
-}
-
-    $.ajax({
-        url: "https://api.nasa.gov/planetary/apod?api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ",	        
-        method: "GET"	     
-      }).then(function(response) {	     
-        console.log(response)
-        $("#apod").attr("src", response.url);
-    });      
 
 
 // APOD Button Click
@@ -128,9 +102,25 @@ $(document).ready(function () {
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
     
-    $(".apod").text("About APOD");
+    var apod = $(".apod").text("About APOD");
+    var quote = $("<div id=quoteDisplay>");
+    var quoteBtn = $("<button class= 'btn quoteBtn'>Gimme More</button>")
+    apod.append(quote);
+    apod.append(quoteBtn);
+ 
+    var quotes = [
+        "Just Do It -NIKE",
+        "Space, the final forntier. -Star Trek",
+        "The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever. -Konstantin Tsiolkovsky",
+        "I know the sky is not the limit because there are footprints on the Moon - and I made some of them -Buzz Alrdin",
+        "There is no sound in outer space",
+      ]
+   
+      $(".quoteBtn").on("click", function() {
+        var randomNumber = Math.floor(Math.random() * (quotes.length));
+        $("#quoteDisplay").text(quotes[randomNumber])});
   });
-
+  
 // Local Hubble View Button Click
 $(".localHubbleViewBtn").on("click", function(event){
     event.preventDefault();
@@ -160,39 +150,38 @@ $(".marsWeatherBtn").on("click", function(event){
     
 });
 
-
-// Space Mission (Started Working - Yakini)
-$(".spaceMissionBtn").on("click",function(event){
-    console.log("Got click");
+// Space Mission (Started Working - Yakini(Onhold))
+// $(".spaceMissionBtn").on("click",function(event){
+//     console.log("Got click");
    
-   event.preventDefault();
-   $(".homePageContent").empty();
-    $(".mainBlock-Contents").empty();
+//    event.preventDefault();
+//    $(".homePageContent").empty();
+//     $(".mainBlock-Contents").empty();
    
-    var h3 = $("<h3 style='font-size: 22px; font-weight: bold;background-color: rgb(196, 187, 140); padding:15px'>");
-    h3.text("Space Mission");
-    spaceMission.append(h3);
-    var spaceMissionDetails = $("<p class = details>").text("NASA has successfully launched over 200 crewed flights. Two have ended in failure, STS-51-L (the Challenger disaster) in 1986, and STS-107 (the Columbia disaster) in 2003. (Apollo 1 in 1967 lost three crew members but never launched.)");
+//     var h3 = $("<h3 style='font-size: 22px; font-weight: bold;background-color: rgb(196, 187, 140); padding:15px'>");
+//     h3.text("Space Mission");
+//     spaceMission.append(h3);
+//     var spaceMissionDetails = $("<p class = details>").text("NASA has successfully launched over 200 crewed flights. Two have ended in failure, STS-51-L (the Challenger disaster) in 1986, and STS-107 (the Columbia disaster) in 2003. (Apollo 1 in 1967 lost three crew members but never launched.)");
     
-    var table= $("<table class='responsive-table'><thead><tr><th>Program</th><th>Start Date</th><th>End Date</th><th>Launched missions</th><th>Notes</th> </tr> </thead> ");
-    var tableContents1 = $("<tbody><tr><td>Mercury Program</td><td>1959</td><td>1963</td><td>6</td><td>First U.S. crewed program</td> </tr>");
-    var tableContents2 = $("<tr><td>Gemini Program</td><td>1963</td><td>1966</td><td>10</td><td>Program used to practice space rendezvous and EVAs</td> </tr>");
-    var tableContents3 = $("<tr><td>Apollo Program</td><td>1961</td><td>1972</td><td>11</td><td>Brought first human to the Moon</td> </tr>");
-    var tableContents4 = $("<tr><td>Skylab</td><td>1973</td><td>1974</td><td>3</td><td>first American space station</td> </tr>");
-    var tableContents5 = $("<tr><td>Space Shuttle</td><td>1981</td><td>2011</td><td>135</td><td>First missions in which a spacecraft was reused</td> </tr>");
-    var tableContents6 = $("<tr><td>International Space Station</td><td>1998</td><td>Ongoing</td><td>54</td><td>Joint with Roscosmos, CSA, ESA, and JAXA</td> </tr>");
-    var tableContents7 = $("<tr><td>Artemis program</td><td>2017</td><td>Ongoing</td><td>0</td><td>Current program to bring humans to the Moon again</td> </tr>");
+//     var table= $("<table class='responsive-table'><thead><tr><th>Program</th><th>Start Date</th><th>End Date</th><th>Launched missions</th><th>Notes</th> </tr> </thead> ");
+//     var tableContents1 = $("<tbody><tr><td>Mercury Program</td><td>1959</td><td>1963</td><td>6</td><td>First U.S. crewed program</td> </tr>");
+//     var tableContents2 = $("<tr><td>Gemini Program</td><td>1963</td><td>1966</td><td>10</td><td>Program used to practice space rendezvous and EVAs</td> </tr>");
+//     var tableContents3 = $("<tr><td>Apollo Program</td><td>1961</td><td>1972</td><td>11</td><td>Brought first human to the Moon</td> </tr>");
+//     var tableContents4 = $("<tr><td>Skylab</td><td>1973</td><td>1974</td><td>3</td><td>first American space station</td> </tr>");
+//     var tableContents5 = $("<tr><td>Space Shuttle</td><td>1981</td><td>2011</td><td>135</td><td>First missions in which a spacecraft was reused</td> </tr>");
+//     var tableContents6 = $("<tr><td>International Space Station</td><td>1998</td><td>Ongoing</td><td>54</td><td>Joint with Roscosmos, CSA, ESA, and JAXA</td> </tr>");
+//     var tableContents7 = $("<tr><td>Artemis program</td><td>2017</td><td>Ongoing</td><td>0</td><td>Current program to bring humans to the Moon again</td> </tr>");
 
-    spaceMission.append(spaceMissionDetails);
-    table.append(tableContents1);
-    table.append(tableContents2);
-    table.append(tableContents3);
-    table.append(tableContents4);
-    table.append(tableContents5);
-    table.append(tableContents6);
-    table.append(tableContents7);
-    spaceMission.append(table);
-});
+//     spaceMission.append(spaceMissionDetails);
+//     table.append(tableContents1);
+//     table.append(tableContents2);
+//     table.append(tableContents3);
+//     table.append(tableContents4);
+//     table.append(tableContents5);
+//     table.append(tableContents6);
+//     table.append(tableContents7);
+//     spaceMission.append(table);
+// });
 
 // Space Information
 $(".spaceInfoBtn").on("click", function(event){
@@ -200,9 +189,42 @@ $(".spaceInfoBtn").on("click", function(event){
    
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty(); 
-   
-    $(".spaceInfo").text("Space Information");
+    
+    var spaceInfo = $(".spaceInfo").text("Space Information");
+    var div = $("<div id='spaceInfoContent'>");
+    var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Mercury_(planet)'>Mercury</a>");
+    var venus = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Venus'>Venus</a>");
+    var earth = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Earth'>Earth</a>");
+    var mars = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Mars'>Mars</a>");
+    var jupiter = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Jupiter'>Jupiter</a>");
+    var saturn = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Saturn'>Saturn</a>");
+    var neptune = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Neptune'>Neptune</a>");
+    var uranus = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Uranus'>Uranus</a>");
 
+    var wiki = $("<div class='wikiInfo'></div>");
+
+    div.append(mercury).append(venus).append(earth).append(mars).append(jupiter).append(saturn).append(neptune).append(uranus);
+    spaceInfo.append(div);
+    spaceInfo.append(wiki);
+    $(document).ready(function() {
+        $(".planet-btn").on("click", function() {
+            console.log($(this).attr("data-planet"))
+            var planet = $(this).attr("data-planet")
+            var Wikiurl = `http://en.wikipedia.org/w/api.php?format=json&exintro=True&action=query&titles=${planet}&prop=extracts&explaintext=True&origin=*`;
+
+          $.ajax({
+            url: Wikiurl,       
+            method: "GET",     
+          }).then(function(response) {	 
+          
+            var pageId = Object.keys(response.query.pages)[0];
+            var intro = response.query.pages[pageId].extract
+          
+            $(".wikiInfo").empty().append(`<div class="box"> <p>${intro}</p> </div>`);
+          });
+          })
+    }) 
+    
 });
 });
 
@@ -227,4 +249,3 @@ $(document).on("click", 'ul a', function(event){
 });
 
 homePage();
-
