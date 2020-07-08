@@ -1,7 +1,7 @@
 var spaceMission = $(".spaceMission");
 var mainBlock = $(".main-block");
 var title= $(".title");
-
+var videoVal = 0;
 
 function homePage(){
     // var videoTitle;
@@ -38,78 +38,59 @@ function homePage(){
           console.log(response);
 
           for(var i = 0 ; i<6; i++){
-         
+        //   debugger
              var href= response.collection.items[i].href;
-             var title = response.collection.items[i].data[i].title;
-             console.log(href);
-             console.log("Title"+videoTitle[i]);
+             var title = response.collection.items[i].data[0].title;
+         
              hrefValue.push(href);
              videoTitle.push(title);
           }
+     
 
           console.log(hrefValue);
           console.log(videoTitle);
          
-        for(var j=0; j<6; j++){ 
-        $.ajax({
-        url: href[j],
-        success: function (response1) {
-        console.log(response1[j]);
+        for(var j=0; j<hrefValue.length; j++){ 
+        
+            $.ajax({
+            url: hrefValue[j],
+            success: function (response1) {
                 
-
-                    console.log(response1[j]);
-                    if(response1[j].matches("~orig.mp4")){
-                        console.log(response1[j]);
-
-                        var video = function (j) {
-                            console.log(videoTitle[j]);
-                            return ('<div class="video">' +
-                              '<p class="title">' + videoTitle[j] + '</p>' +
-                              '<img src=' +response1[j]+ 'width="50" height="50">' +
-                              '</div>');
-                          }
-                  
-                         divMain.append(video(j));
-                         mainBlock.append(divMain);
+                console.log(typeof response1);
+                var finalResponse = JSON.stringify(response1);
+                // console.log("Without Stringify" +response1);
+                // console.log("finalResponse[j]" +finalResponse);
+                
+              for(var k=0; k<10; k++){
+            //  debugger
+                if(response1[k].endsWith("~orig.mp4")){
+                console.log("Wow I'm inside"); 
+                console.log("finalResponse[j]" +response1[k]);
+                videoVal++;
+                // debugger
+              
+                var video = function (k) {
+                    var title= videoTitle[videoVal-1];
+                    return ('<div class="video">' +
+                        '<p class="title-video">' + videoTitle[videoVal-1] + '</p>' +
+                        '<img src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" >' +
+                        '</div>');
                     }
+                    
+                    divMain.append(video(k));
+                    mainBlock.append(divMain);
+                   
                 }
+               
+                break;
+            }
+            }
             });
-    
         }
     }
 });
 });
-
 }
-
-// AJAX call
-     $.ajax({
-        url: "https://api.nasa.gov/planetary/apod?api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ",
-        method: "GET"
-      }).then(function(response) {
-        console.log(response)
-        const header = document.querySelector("#apod");
-        header.setAttribute("style", `background-image:  url(${response.url}); background-position: center; background-repeat: no-repeat; background-size: cover;`);
-      });
-var quotes = [
-  "Just Do It -NIKE",
-  "Space, the final forntier. -Star Trek",
-  "The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever. -Konstantin Tsiolkovsky",
-  "I know the sky is not the limit because there are footprints on the Moon - and I made some of them -Buzz Alrdin",
-  "There is no sound in outer space",
-]
-function newQuote() {
-  var randomNumber = Math.floor(Math.random() * (quotes.length));
-  document.getElementById("quoteDisplay").innerHTML = quotes[randomNumber];
-}
-
-    $.ajax({
-        url: "https://api.nasa.gov/planetary/apod?api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ",	        
-        method: "GET"	     
-      }).then(function(response) {	     
-        console.log(response)
-        $("#apod").attr("src", response.url);
-    });      
 
 
 // APOD Button Click
@@ -128,9 +109,27 @@ $(document).ready(function () {
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
     
-    $(".apod").text("About APOD");
+    var apod = $(".apod").text("About APOD");
+    var quote = $("<div id=quoteDisplay>");
+    var quoteBtn = $("<button class= 'btn quoteBtn'>Gimme More</button>")
+    apod.append(quote);
+    apod.append(quoteBtn);
+    
+ 
+    
+    
+    var quotes = [
+        "Just Do It -NIKE",
+        "Space, the final forntier. -Star Trek",
+        "The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever. -Konstantin Tsiolkovsky",
+        "I know the sky is not the limit because there are footprints on the Moon - and I made some of them -Buzz Alrdin",
+        "There is no sound in outer space",
+      ]
+      var randomNumber = Math.floor(Math.random() * (quotes.length));
+      $(".quoteBtn").on("click", function() {
+          $("#quoteDisplay").text(quotes[randomNumber])});
   });
-
+  
 // Local Hubble View Button Click
 $(".localHubbleViewBtn").on("click", function(event){
     event.preventDefault();
@@ -159,7 +158,6 @@ $(".marsWeatherBtn").on("click", function(event){
     $(".marsWeather").text("Mars Weather");
     
 });
-
 
 // Space Mission (Started Working - Yakini)
 $(".spaceMissionBtn").on("click",function(event){
@@ -200,9 +198,43 @@ $(".spaceInfoBtn").on("click", function(event){
    
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty(); 
-   
-    $(".spaceInfo").text("Space Information");
+    
+    var spaceInfo = $(".spaceInfo").text("Space Information");
+    var div = $("<div id='spaceInfoContent'>");
+    var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Mercury_(planet)'>Mercury</a>");
+    var venus = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Venus'>Venus</a>");
+    var earth = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Earth'>Earth</a>");
+    var mars = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Mars'>Mars</a>");
+    var jupiter = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Jupiter'>Jupiter</a>");
+    var saturn = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Saturn'>Saturn</a>");
+    var neptune = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Neptune'>Neptune</a>");
+    var uranus = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Uranus'>Uranus</a>");
 
+    var wiki = $("<div class='wikiInfo'></div>");
+
+    div.append(mercury).append(venus).append(earth).append(mars).append(jupiter).append(saturn).append(neptune).append(uranus);
+    spaceInfo.append(div);
+    spaceInfo.append(wiki);
+    $(document).ready(function() {
+        $(".planet-btn").on("click", function() {
+            console.log($(this).attr("data-planet"))
+            var planet = $(this).attr("data-planet")
+            var Wikiurl = `http://en.wikipedia.org/w/api.php?format=json&exintro=True&action=query&titles=${planet}&prop=extracts&explaintext=True&origin=*`;
+          
+          
+          $.ajax({
+            url: Wikiurl,       
+            method: "GET",     
+          }).then(function(response) {	 
+          
+            var pageId = Object.keys(response.query.pages)[0];
+            var intro = response.query.pages[pageId].extract
+          
+            $(".wikiInfo").empty().append(`<div class="box"> <p>${intro}</p> </div>`);
+          });
+          })
+    }) 
+    
 });
 });
 
@@ -227,4 +259,3 @@ $(document).on("click", 'ul a', function(event){
 });
 
 homePage();
-
