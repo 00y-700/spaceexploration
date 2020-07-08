@@ -1,26 +1,85 @@
 /* Common Styling - index.html */
-nav{
+/* nav{
     text-decoration: none;
-}
+} */
 
 .parallax-container{
     height:350px;
+  
 }
 
-.waves-effect{
+ /* input[type=text]:not(.browser-default){ 
+    width: 600px;
+    float:right;
+   
+   
+ } 
+.search{
+    float:right;
+    /* margin-right: -570px; */
+    
+    form{
+        width:400px;
+        float: right;
+        margin-top: -85px; 
+    }
+
+    /* .material-icons{
+        margin-bottom: -15px;
+        /* margin-left: 340px; */
+   /* } */
+
+/* .waves-effect{
     display:block;
     margin:15px;
     padding: 5px 8px;
     width:90%;
-}
+} */
+
+/* .nav-wrapper{
+    width:100%;
+} */
 
 .side-block {
-    /* border: 1px solid black;
-    background-color: rgb(224, 214, 214); */
-    margin-top: 35px;
-    margin-left: 35px;
-    width:100%;
     
+    display:flex;
+    margin-left:25px;
+     
+}
+
+
+.Btn{
+    width:200px;
+    height:50px;
+    /* padding: 15px;  */
+    text-align: center;
+}
+
+.homeBtn{
+    width:15px;
+}
+
+.nav-wrapper{
+    background-color: rgb(49, 48, 48);
+}
+.mainBlock-Contents{
+    background-color: rgb(255, 248, 206);
+    width: 96%;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+a{
+    color:#000;
+    text-decoration:none;
+}
+a:hover {
+    text-decoration:underline;
+}
+
+.side-block a.active {
+    color:#cc70ad;
+ 
 }
 
 /* Styling - APOD */
@@ -39,30 +98,67 @@ nav{
 
 
 /* Common Media Queries - index.html */
-@media screen and (max-width: 873px) {
-    .side-block {      
-        width: 80%;
+@media screen and (max-width: 1251px) and (min-width: 1120px){
+    .Btn {      
+        width:175px;
+    }
+
+    .homeBtn{
+        width:15px;
+    }
+
+}
+
+@media screen and (max-width: 1119px) and (min-width: 1046px){
+    .Btn  {      
+        width: 165px;
+        font-size: 12px;
+    }
+
+    .homeBtn{
+        width:15px;
     }
 
 }
 
 
-@media screen and (max-width: 773px) {
-    .side-block {      
-        width: 95%;
+@media screen and (max-width: 1045px) and (min-width: 993px){
+    .Btn  {      
+        width: 148px; 
+        font-size: 12px;
+    }
+
+    .homeBtn{
+        width:15px;
+    }
+
     }
 
 }
 
-@media screen and (max-width: 420px) {
-    .side-block {      
-        width: 75%;
+/* @media screen and  (max-width: 800px) {
+   form{
+        width:100%;
+        margin-top: -25px; 
     }
+} */
 
-    .waves-effect{
-        width: 100%;
+@media screen and  (max-width: 780px) and (min-width: 600px) {
+    .mainBlock-Contents{
+        width:93%;
     }
-
-    
 }
 
+@media screen and  (max-width: 599px) {
+    .mainBlock-Contents{
+        width:89%;
+    }
+}
+
+ @media screen and  (max-width: 800px) {
+    form{
+         width:100%;
+         margin-top: -25px; 
+     }
+ }
+  
