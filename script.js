@@ -65,8 +65,9 @@ function homePage(){
                 var video = function (k) {
                     var title= videoTitle[videoVal-1];
                     return ('<div class="video">' +
-                        '<p class="title-video">' + videoTitle[videoVal-1] + '</p>' +
-                        '<img src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" >' +
+                        '<p class="title-video">' + videoTitle[videoVal-1] + '</p>' + '<video width="320" height="240" controls>' +
+
+                        '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
                         '</div>');
                     }
                     
