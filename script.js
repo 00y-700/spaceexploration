@@ -131,7 +131,7 @@ function newQuote() {
 }
 $("#quotebtn").on("click",function(event){
   newQuote()
-})
+});
 // Local Hubble View Button Click
 $(".localHubbleViewBtn").on("click", function(event){
     event.preventDefault();
@@ -260,3 +260,4 @@ $(document).on("click", 'ul a', function(event){
 });
 
 homePage();
+});
