@@ -87,7 +87,14 @@ a:hover {
 /* Styling - APOD */
 
 
-/* Styling - Local Sky View */
+/* Styling - Local Hubble View */
+.hubbleDescription {
+    padding: 1%;
+    /* margin: 2%; */
+    font-weight: normal;
+    font-size: 20px;
+}
+
 
 /* Styling - Near Earth Objects */
 
