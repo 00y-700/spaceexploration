@@ -63,7 +63,9 @@
     background-color: rgb(49, 48, 48);
 }
 .mainBlock-Contents{
-    background-color: rgb(255, 248, 206);
+    /* background-color: rgb(255, 248, 206); */
+    font-weight: bold;
+    font-size: 22px;
     width: 96%;
     margin-top: 15px;
     margin-left: 20px;
@@ -94,7 +96,13 @@ a:hover {
 /* Styling - Space Missions */
 
 /* Styling - Space Information */
+.spaceInfo {
 
+}
+
+.planet-btn {
+    margin: 12px;
+}
 
 
 /* Common Media Queries - index.html */
