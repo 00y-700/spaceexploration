@@ -65,9 +65,8 @@ function homePage(){
                 var video = function (k) {
                     var title= videoTitle[videoVal-1];
                     return ('<div class="video">' +
-                        '<p class="title-video">' + videoTitle[videoVal-1] + '</p>' + '<video width="320" height="240" controls>' +
-
-                        '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
+                        '<p class="title-video">' + videoTitle[videoVal-1] + '</p>' +
+                        '<img src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" >' +
                         '</div>');
                     }
                     
@@ -110,7 +109,7 @@ $(document).ready(function () {
     apod.append(quoteBtn);
  
     var APIKey = "unepUpoJglDuNOxtOuPToAdKApZ40RRSvfwIHto6";
-var quotes = [
+    var quotes = [
   "Space, the final forntier. -Star Trek",
   "The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever. -Konstantin Tsiolkovsky",
   "I know the sky is not the limit because there are footprints on the Moon - and I made some of them -Buzz Alrdin",
@@ -255,8 +254,9 @@ $(document).on("click", 'ul a', function(event){
     //     if($('div a').hasClass('active')){
     //         $(".side-block");
     //     }
-    }
+      }
   
 });
 
 homePage();
+});
