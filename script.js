@@ -1,10 +1,10 @@
 var spaceMission = $(".spaceMission");
 var mainBlock = $(".main-block");
 var title= $(".title");
-var videoVal = 0;
 
 function homePage(){
     // var videoTitle;
+    var videoVal = 0;
     $(document).ready(function () {
         // event.preventDefault();
         $(".mainBlock-Contents").empty();
@@ -53,19 +53,22 @@ function homePage(){
                 
                 console.log(typeof response1);
                 var finalResponse = JSON.stringify(response1);
+               
              
-              for(var k=0; k<10; k++){
+              for(var k=0; k<6; k++){
             //  debugger
                 if(response1[k].endsWith("~orig.mp4")){
                 console.log("Wow I'm inside"); 
                 console.log("finalResponse[j]" +response1[k]);
                 videoVal++;
+                var lastInstance = response1[k].lastIndexOf("/");
+                var title = response1[k].slice(36,lastInstance);
                 // debugger
               
                 var video = function (k) {
-                    var title= videoTitle[videoVal-1];
+                    // var title= videoTitle[videoVal-1];
                     return ('<div class="video">' +
-                        '<p class="title-video">' + videoTitle[videoVal-1] + '</p>' + '<video width="320" height="240" controls>' +
+                        '<p class="title-video">' + title + '</p>' + '<video width="320" height="240" controls>' +
 
                         '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
                         '</div>');
@@ -111,19 +114,19 @@ $(document).ready(function () {
  
 
     var quotes = [
-         "Space, the final frontier. -Star Trek",
-  "The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever. -Konstantin Tsiolkovsky",
-  "I know the sky is not the limit because there are footprints on the Moon - and I made some of them -Buzz Alrdin",
-  "There is no sound in outer space",
-  "Never limit yourself because of others limited imagination; never limit others becasuse of your own limited imagination. -Mae Jemison",
-  "Earth is a small town with many neighborhoods in a very big universe. -Ron Garan",
-  "I looked and I looded but I didn't see God. -Yuri Gagarin",
-  "Gravity hurts. -Victor Alexandrow",
-  "We are limited only by our imagination. -Ron Garan",
-  "In the context of general relativity, space almost is a substance. It can bend and twist and stretch, and probably the best way to thing about space is to just kind of imagine a big piece of rubber that you can pull and twist and bend. -Alan Guth",
-  "Two things are infinite: the universe and human stupidity, and I'm not sure about the universe. -Albert Einstein",
-  "For me, it is far better to grasp the Universe as it really is than to persist in delusion, however satisfying and reassuring. - Carl Sagan",
-  "By denying scientific principles, one may maintain any paradox. -Galileo Galilei",
+        "Space, the final frontier. -Star Trek",
+        "The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever. -Konstantin Tsiolkovsky",
+        "I know the sky is not the limit because there are footprints on the Moon - and I made some of them -Buzz Alrdin",
+        "There is no sound in outer space",
+        "Never limit yourself because of others limited imagination; never limit others becasuse of your own limited imagination. -Mae Jemison",
+        "Earth is a small town with many neighborhoods in a very big universe. -Ron Garan",
+        "I looked and I looded but I didn't see God. -Yuri Gagarin",
+        "Gravity hurts. -Victor Alexandrow",
+        "We are limited only by our imagination. -Ron Garan",
+        "In the context of general relativity, space almost is a substance. It can bend and twist and stretch, and probably the best way to thing about space is to just kind of imagine a big piece of rubber that you can pull and twist and bend. -Alan Guth",
+        "Two things are infinite: the universe and human stupidity, and I'm not sure about the universe. -Albert Einstein",
+        "For me, it is far better to grasp the Universe as it really is than to persist in delusion, however satisfying and reassuring. - Carl Sagan",
+        "By denying scientific principles, one may maintain any paradox. -Galileo Galilei",
       ]
    
       $(".quoteBtn").on("click", function() {
