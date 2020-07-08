@@ -109,9 +109,9 @@ $(document).ready(function () {
     apod.append(quote);
     apod.append(quoteBtn);
  
-    var APIKey = "unepUpoJglDuNOxtOuPToAdKApZ40RRSvfwIHto6";
-var quotes = [
-  "Space, the final forntier. -Star Trek",
+
+    var quotes = [
+         "Space, the final frontier. -Star Trek",
   "The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever. -Konstantin Tsiolkovsky",
   "I know the sky is not the limit because there are footprints on the Moon - and I made some of them -Buzz Alrdin",
   "There is no sound in outer space",
@@ -124,21 +124,44 @@ var quotes = [
   "Two things are infinite: the universe and human stupidity, and I'm not sure about the universe. -Albert Einstein",
   "For me, it is far better to grasp the Universe as it really is than to persist in delusion, however satisfying and reassuring. - Carl Sagan",
   "By denying scientific principles, one may maintain any paradox. -Galileo Galilei",
-]
-function newQuote() {
-  var randomNumber = Math.floor(Math.random() * (quotes.length));
-  document.getElementById("quoteDisplay").innerHTML = quotes[randomNumber];
-}
-$("#quotebtn").on("click",function(event){
-  newQuote()
-})
+      ]
+   
+      $(".quoteBtn").on("click", function() {
+        var randomNumber = Math.floor(Math.random() * (quotes.length));
+        $("#quoteDisplay").text(quotes[randomNumber])});
+  });
+  
+
 // Local Hubble View Button Click
 $(".localHubbleViewBtn").on("click", function(event){
     event.preventDefault();
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
-   
-    $(".localHubbleView").text("Local Sky View");
+    
+    var hubbleView = $(".localHubbleView").text("Local Hubble View");
+    var hubbleWindow = $("<div id=hubbleWindow>");
+    var hubbleTitle = $("<div class='hubbleTitle'></div>");
+    var hubbleImage = $("<img class='hubbleImage'>");
+    var hubbleDescription = $("<div class='hubbleDescription'></div>");
+
+    
+
+    var queryURL = "https://cors-anywhere.herokuapp.com/http://hubblesite.org/api/v3/external_feed/st_live?sort=-pub_date";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(hubbleLive) {
+      console.log(hubbleLive[0]);
+
+     // Transfer content to HTML
+        $(".hubbleTitle").html("<h3>" + hubbleLive[0].title + " Telescope Details</h3>");
+        $(".hubbleImage").attr("src" , hubbleLive[0].image);
+        $(".hubbleDescription").text("What is Hubble Looking at right now?: " + hubbleLive[0].description);
+        
+      });
+      hubbleWindow.append(hubbleTitle).append(hubbleImage).append(hubbleDescription);
+      hubbleView.append(hubbleWindow);
 });
 
 // Near Earth Objects
