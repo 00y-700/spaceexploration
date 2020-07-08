@@ -4,15 +4,22 @@
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+ 
       <!-- Compiled and minified CSS -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ 
       <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://cesium.com/downloads/cesiumjs/releases/1.71/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
+      <script src="https://cesium.com/downloads/cesiumjs/releases/1.71/Build/Cesium/Cesium.js"></script>
+
+    </head>
   <body class= "parallax-demo" data-gr-c-s-loaded="true">
     <div style="display:none;"></div>
        <!-- Navbar goes here -->
@@ -26,7 +33,7 @@
    <div class= "parallax-container">
     <!-- transform: translate3d(-50%, 213.983px, 0px); opacity: 1;   -->
        <div class = "parallax">
-         <img  id="apod" style="transform: translate3d(-50%, 213.983px, 0px); opacity: 1;"/>    </div>
+         <img  id="apod" src="https://api.nasa.gov/planetary/apod/static/default_apod_image.jpg" style="transform: translate3d(-50%, 213.983px, 0px); opacity: 1;"/>    </div>
        <div class = "container"><br>
         <br>
          <h2 class="header center teal-text text-lighten-2">Explore Space</h2>
@@ -40,7 +47,7 @@
 
 
       <div class="row">
-        <div class="col s12 m4 l3"> 
+        <!-- <div class="col s12 m4 l3">  -->
             <!-- 
             
             Easy - APOD (APOD)- Details regarding picture of the day (with picture and explanation) and (Space Facts)
@@ -57,7 +64,49 @@
             Space Info -  "Image" Button of planets. Button triggers google search and displays the details reg that planet.
             
           -->
-          <div class = "side-block container">
+          <nav>
+            <div class="nav-wrapper ">
+              <a href="#!" class="brand-logo"></a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul class="left hide-on-med-and-down side-block container">
+
+              <li> <a class="homeBtn Btn"><i class="material-icons">home</i></a></li>
+
+              <li> <a class="apodBtn Btn">About APOD</a></li>
+
+              <li><a class="localHubbleViewBtn Btn">Local Hubble View</a></li>
+
+              <li><a class="newEarthObjectsBtn Btn">Near Earth Objects</a></li>
+
+              <li><a class="marsWeatherBtn Btn">Mars Weather</a></li>
+
+              <li> <a class="spaceMissionBtn Btn">Space Missions</a></li>
+
+              <li> <a class="spaceInfoBtn Btn">Space Information</a></li>
+  
+              </ul>
+            </div>
+          </nav>
+        
+          <ul class="sidenav" id="mobile-demo">
+
+            <li> <a class="homeBtn Btn"><i class="material-icons">home</i></a></li>
+            
+            <li><a class="apodBtn Btn">About APOD</a></li>
+
+            <li><a class="localHubbleViewBtn Btn">Local Hubble View</a></li>
+
+            <li><a class="newEarthObjectsBtn Btn">Near Earth Objects</a></li>
+
+            <li><a class="marsWeatherBtn Btn">Mars Weather</a></li>
+
+            <li><a class="spaceMissionBtn Btn">Space Missions</a></li>
+
+            <li><a class="spaceInfoBtn Btn">Space Information</a></li>
+          </div>
+          
+          
+          <!-- <div class = "side-block container">
             <a class="waves-effect waves-light apodBtn btn">About APOD</a>
 
             <a class="waves-effect waves-light localHubbleViewBtn btn">Local Hubble View</a>
@@ -66,48 +115,42 @@
 
             <a class="waves-effect waves-light marsWeatherBtn btn">Mars Weather</a>
 
-            <a class="waves-effect waves-light spaceMissionsBtn btn">Space Missions</a>
+            <a class="waves-effect waves-light spaceMissionBtn btn">Space Missions</a>
 
             <a class="waves-effect waves-light spaceInfoBtn btn">Space Information</a>
   
-          </div>
+          </div> -->
         </div>
      
         
           <div class="main-block col s12 m8 l9"> 
-            <div class = "apod">
+            <div class = "mainBlock-Contents center-align apod">
 
             </div>
-            <div class = "localHubbleView">
+            <div class = "mainBlock-Contents center-align localHubbleView">
 
             </div>
-            <div class = "nearEarthObjects">
+            <div class = "mainBlock-Contents center-align nearEarthObjects">
 
             </div>
-            <div class = "marsWeather">
+            <div class = "mainBlock-Contents center-align marsWeather">
 
             </div>
-            <div class = "spaceMission">
+            <div class = "mainBlock-Contents center-align spaceMission">
 
             </div>
-            <div class = "spaceInfo">
+            <div class = "mainBlock-Contents center-align spaceInfo">
 
             </div>
        
           </div>
       </div>
-
     <div id="quoteDisplay">
       <!-- Quotes should display here -->
+      <button onClick="newQuote()">Gimme More</button>
     </div>
-    <button id="button" onClick="newQuote()">Gimme More</button>
-
-
-  </body>
-
-    <script src = "script.js"></script>
+    <script src="script.js"></script>
+    <script src = "script1.js"></script>
 
  </body>
-
-
 </html>
