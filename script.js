@@ -3,16 +3,12 @@ var mainBlock = $(".main-block");
 var title= $(".title");
 
 function homePage(){
-    // var videoTitle;
+
     var videoVal = 0;
     $(document).ready(function () {
         
         $('.modal').modal();
-        // $('#modal1').modal('open');
 
-        // $('.modal-trigger').modal();
-        // $(".mainBlock-Contents").empty();
-        // $('.modal-trigger').leanModal();
         var divMain = $("<div class='homePageContent'>")
         var homePageContent = $("<p class='homePageTitle' style='font-size: 20px; font-weight: bold; padding:10px'>");
         homePageContent.text("Top Stories");
@@ -27,9 +23,12 @@ function homePage(){
         divMain.append(div);
         mainBlock.append(divMain);
 
-      
         var hrefValue =[];
-        var queryURL1 = "https://images-api.nasa.gov/search?q=Nasa Space Mission&media_type=video";
+        var searches = ["Nasa Space Mission", "Satellite Launch", "Planets", "Mars", "Mars Rover", "Solar System", "Galaxy", "Asteroids"];
+
+        var randomSearch = Math.floor(Math.random() * (searches.length));
+        console.log(searches[randomSearch]);
+        var queryURL1 = "https://images-api.nasa.gov/search?q=" +searches[randomSearch]+ "&media_type=video";
 
         $.ajax({
           url: queryURL1,
@@ -48,7 +47,7 @@ function homePage(){
             url: hrefValue[j],
             success: function (response1) {
 
-              for(var k=0; k<6; k++){
+              for(var k=0; k<response1.length; k++){
                 if(response1[k].endsWith("~orig.mp4")){
                
                 var lastInstance = response1[k].lastIndexOf("/");
@@ -88,16 +87,22 @@ function homePage(){
 
      var URL = "https://cors-anywhere.herokuapp.com/http://api.serpstack.com/search?access_key="  + APIKey + "&query=" + inputVal;
      console.log(URL);
+     var result = '';
   $.ajax({
     
     url: URL,
     contentType: 'application/json',
     success: function (serpResponse) {
-        console.log(serpResponse);
-   }
+          serpResponse.organic_results.forEach(res => {
+            result = `
+                <a href='${res.url}' target=_blank><h4 class = 'result-title'>${res.title} </h4></a>
+                <p class = 'result url'>${res.url}</p> 
+                <p class = 'result snippet'>${res.snippet}</p>`
+          $(".searchContent").append(result);
+        });
+        }
+   });
   });
-
-});
 });
 }
 
