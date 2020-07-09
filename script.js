@@ -103,7 +103,7 @@ $(document).ready(function () {
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
     
-    var apod = $(".apod").text("About APOD");
+    var apod = $(".apod").text("Quote Generator");
     var quote = $("<div id=quoteDisplay>");
     var quoteBtn = $("<button class= 'btn quoteBtn'>Gimme More</button>")
     apod.append(quote);
@@ -117,7 +117,7 @@ $(document).ready(function () {
   "There is no sound in outer space",
   "Never limit yourself because of others limited imagination; never limit others becasuse of your own limited imagination. -Mae Jemison",
   "Earth is a small town with many neighborhoods in a very big universe. -Ron Garan",
-  "I looked and I looded but I didn't see God. -Yuri Gagarin",
+  "I looked and I looked but I didn't see God. -Yuri Gagarin",
   "Gravity hurts. -Victor Alexandrow",
   "We are limited only by our imagination. -Ron Garan",
   "In the context of general relativity, space almost is a substance. It can bend and twist and stretch, and probably the best way to thing about space is to just kind of imagine a big piece of rubber that you can pull and twist and bend. -Alan Guth",
@@ -226,26 +226,36 @@ $(".spaceInfoBtn").on("click", function(event){
     
     var spaceInfo = $(".spaceInfo").text("Space Information");
     var div = $("<div id='spaceInfoContent'>");
-    var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Mercury_(planet)'>Mercury</a>");
-    var venus = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Venus'>Venus</a>");
-    var earth = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Earth'>Earth</a>");
-    var mars = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Mars'>Mars</a>");
-    var jupiter = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Jupiter'>Jupiter</a>");
-    var saturn = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Saturn'>Saturn</a>");
-    var neptune = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Neptune'>Neptune</a>");
-    var uranus = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Uranus'>Uranus</a>");
-
+    var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-img='mercurypic' data-planet='Mercury_(planet)'>Mercury</a>");
+    var venus = $("<a class='waves-effect waves-light btn planet-btn' data-img='venuspic' data-planet='Venus'>Venus</a>");
+    var earth = $("<a class='waves-effect waves-light btn planet-btn' data-img='earthpic' data-planet='Earth'>Earth</a>");
+    var mars = $("<a class='waves-effect waves-light btn planet-btn' data-img='marspic' data-planet='Mars'>Mars</a>");
+    var jupiter = $("<a class='waves-effect waves-light btn planet-btn' data-img='jupiterpic' data-planet='Jupiter'>Jupiter</a>");
+    var saturn = $("<a class='waves-effect waves-light btn planet-btn' data-img='saturnpic' data-planet='Saturn'>Saturn</a>");
+    var neptune = $("<a class='waves-effect waves-light btn planet-btn' data-img='neptunepic' data-planet='Neptune'>Neptune</a>");
+    var uranus = $("<a class='waves-effect waves-light btn planet-btn' data-img='uranuspic' data-planet='Uranus'>Uranus</a>");
+    var planetPic = $("<div class='planet-pic'>IMG</div>")
     var wiki = $("<div class='wikiInfo'></div>");
+
+    // var mercurypic = $("src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg/800px-Mercury_in_color_-_Prockter07-edit1.jpg'");
 
     div.append(mercury).append(venus).append(earth).append(mars).append(jupiter).append(saturn).append(neptune).append(uranus);
     spaceInfo.append(div);
+    spaceInfo.append(planetPic)
     spaceInfo.append(wiki);
     $(document).ready(function() {
         $(".planet-btn").on("click", function() {
             console.log($(this).attr("data-planet"))
             var planet = $(this).attr("data-planet")
+            console.log($(this).attr("data-img"))
+            // var planetImg = $(this).attr("data-img")
             var Wikiurl = `http://en.wikipedia.org/w/api.php?format=json&exintro=True&action=query&titles=${planet}&prop=extracts&explaintext=True&origin=*`;
-
+          
+          // if("data-image" === "mercurypic") {
+          //   $(".planet-pic").empty().append(`<img src='800px-Mercury_in_color_-_Prockter07-edit1.jpg'></img>`);}
+          //   // $(".planet-pic").empty().append(`<img src='${planetImg}'></img>`);
+            
+            // $(".planet-pic").empty().append(`<img src='800px-Mercury_in_color_-_Prockter07-edit1.jpg'></img>`);
           $.ajax({
             url: Wikiurl,       
             method: "GET",     
@@ -253,8 +263,9 @@ $(".spaceInfoBtn").on("click", function(event){
           
             var pageId = Object.keys(response.query.pages)[0];
             var intro = response.query.pages[pageId].extract
+
           
-            $(".wikiInfo").empty().append(`<div class="box"> <p>${intro}</p> </div>`);
+            $(".wikiInfo").empty().append(`<div class="box"> <p>${intro}</p> <p id='source-text'>Source: Wikipedia.org</p></div>`);
           });
           })
     }) 
