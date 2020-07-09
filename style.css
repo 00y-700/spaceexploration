@@ -1,14 +1,13 @@
-
 .parallax-container{
     height:350px;
   
 }
 
-    form{
-        width:400px;
-        float: right;
-        margin-top: -85px; 
-    }
+form{
+    width:400px;
+    float: right;
+    margin-top: -85px; 
+}
 
 
 .side-block {
@@ -31,20 +30,16 @@
 }
 
 .homePageContent{
-    border : 1px solid black;
+    /* border : 1px solid black; */
     margin: 10px;
     padding:20px;
   
 }
 
-.video{
-    border : 1px solid black;
-    margin: 10px;
-    padding:20px;
-}
 .nav-wrapper{
     background-color: rgb(49, 48, 48);
 }
+
 .mainBlock-Contents{
     /* background-color: rgb(255, 248, 206); */
     font-weight: bold;
@@ -66,6 +61,23 @@ a:hover {
     color:#cc70ad;
  
 }
+
+.title-video{
+    width: 380px;
+}
+
+.video {
+    border : 1px solid black;
+    margin: 10px;
+    padding:14px;
+    display: inline-table;
+    height:340px;
+}
+
+/* #modalContainer{
+    visibility : hidden;
+} */
+
 
 /* Styling - APOD */
 

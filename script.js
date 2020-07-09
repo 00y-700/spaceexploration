@@ -6,8 +6,13 @@ function homePage(){
     // var videoTitle;
     var videoVal = 0;
     $(document).ready(function () {
-        // event.preventDefault();
-        $(".mainBlock-Contents").empty();
+        
+        $('.modal').modal();
+        // $('#modal1').modal('open');
+
+        // $('.modal-trigger').modal();
+        // $(".mainBlock-Contents").empty();
+        // $('.modal-trigger').leanModal();
         var divMain = $("<div class='homePageContent'>")
         var homePageContent = $("<p class='homePageTitle' style='font-size: 20px; font-weight: bold; padding:10px'>");
         homePageContent.text("Top Stories");
@@ -16,13 +21,13 @@ function homePage(){
         var div = $("<form>");
       
         var input = $("<input type='text'  id='search' name='Textsearch'>");
-        var button = $("<button id='submitButton' class='searchBox'> <i class='material-icons'>search</i>");
+        var button = $("<a href='#modal1' class='btn modal-trigger searchBtn'> <i class='material-icons'>search</i>");
         div.append(input).append(button);
         homePageContent.append(div);
         divMain.append(div);
         mainBlock.append(divMain);
-     
-        var videoTitle=[];
+
+      
         var hrefValue =[];
         var queryURL1 = "https://images-api.nasa.gov/search?q=Nasa Space Mission&media_type=video";
 
@@ -30,55 +35,37 @@ function homePage(){
           url: queryURL1,
           method: "GET",
           success: function (response) {
-          console.log(response);
-
+    
           for(var i = 0 ; i<6; i++){
         //   debugger
              var href= response.collection.items[i].href;
-             var title = response.collection.items[i].data[0].title;
-         
              hrefValue.push(href);
-             videoTitle.push(title);
           }
-     
-
-          console.log(hrefValue);
-          console.log(videoTitle);
-         
+    
         for(var j=0; j<hrefValue.length; j++){ 
         
             $.ajax({
             url: hrefValue[j],
             success: function (response1) {
-                
-                console.log(typeof response1);
-                var finalResponse = JSON.stringify(response1);
-               
-             
+
               for(var k=0; k<6; k++){
-            //  debugger
                 if(response1[k].endsWith("~orig.mp4")){
-                console.log("Wow I'm inside"); 
-                console.log("finalResponse[j]" +response1[k]);
-                videoVal++;
+               
                 var lastInstance = response1[k].lastIndexOf("/");
                 var title = response1[k].slice(36,lastInstance);
-                // debugger
-              
-                var video = function (k) {
-                    // var title= videoTitle[videoVal-1];
-                    return ('<div class="video">' +
-                        '<p class="title-video">' + title + '</p>' + '<video width="320" height="240" controls>' +
 
+                var video = function (k) {
+                    return ('<div class="video">' +
+                        '<p class="title-video" >' + title + '</p>' + '<video width="320" height="240" controls>' +
                         '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
+      
                         '</div>');
                     }
                     
                     divMain.append(video(k));
-                    mainBlock.append(divMain);
-                   
+                    mainBlock.append(divMain); 
                 }
-               
+              
                 break;
             }
             }
@@ -86,9 +73,33 @@ function homePage(){
         }
     }
 });
+
+
+  $(".searchBtn").on("click", function(event){
+    
+     console.log("Received the hjghj click");
+     event.preventDefault();
+     var inputVal = $("input:text").val().trim();
+     console.log(inputVal);
+    //  if(inputVal != ""){
+ 
+    //  }
+     var APIKey = "fb7ea89c26de6962a04a6bdfdf2764d1";
+
+     var URL = "https://cors-anywhere.herokuapp.com/http://api.serpstack.com/search?access_key="  + APIKey + "&query=" + inputVal;
+     console.log(URL);
+  $.ajax({
+    
+    url: URL,
+    contentType: 'application/json',
+    success: function (serpResponse) {
+        console.log(serpResponse);
+   }
+  });
+
+});
 });
 }
-
 
 // APOD Button Click
 $(document).ready(function () {
@@ -97,6 +108,8 @@ $(document).ready(function () {
 
    $(".homeBtn").on("click", function(event){
     event.preventDefault();
+    $(".homePageContent").empty();
+    $(".mainBlock-Contents").empty();
     homePage();
 
    });
@@ -284,5 +297,7 @@ $(document).on("click", 'ul a', function(event){
     }
   
 });
+
+
 
 homePage();
