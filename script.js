@@ -2,26 +2,26 @@ var spaceMission = $(".spaceMission");
 var mainBlock = $(".main-block");
 var title= $(".title");
 
+
 function homePage(){
 
     var videoVal = 0;
+   
     $(document).ready(function () {
-        
-        $('.modal').modal();
-
+  
         var divMain = $("<div class='homePageContent'>")
         var homePageContent = $("<p class='homePageTitle' style='font-size: 20px; font-weight: bold; padding:10px'>");
         homePageContent.text("Top Stories");
         divMain.append(homePageContent);
  
-        var div = $("<form>");
+        // var div = $("<form>");
       
-        var input = $("<input type='text'  id='search' name='Textsearch'>");
-        var button = $("<a href='#modal1' class='btn modal-trigger searchBtn'> <i class='material-icons'>search</i>");
-        div.append(input).append(button);
-        homePageContent.append(div);
-        divMain.append(div);
-        mainBlock.append(divMain);
+        // var input = $("<input type='text'  id='search' name='Textsearch' placeholder='Search here'>");
+        // var button = $("<a href='#modal1' class='btn modal-trigger searchBtn'> <i class='material-icons'>search</i>");
+        // div.append(input).append(button);
+        // homePageContent.append(div);
+        // divMain.append(div);
+        // mainBlock.append(divMain);
 
         var hrefValue =[];
         var searches = ["Nasa Space Mission", "Satellite Launch", "Perseverance rover", "Mars", "Mars Rover", "Solar System", "Galaxy", "Asteroids"];
@@ -36,7 +36,7 @@ function homePage(){
           success: function (response) {
     
           for(var i = 0 ; i<6; i++){
-        //   debugger
+
              var href= response.collection.items[i].href;
              hrefValue.push(href);
           }
@@ -74,44 +74,49 @@ function homePage(){
 });
 
 
-  $(".searchBtn").on("click", function(event){
-    
-     console.log("Received the hjghj click");
-     event.preventDefault();
-     var inputVal = $("input:text").val().trim();
-     console.log(inputVal);
-     if(inputVal != ""){
-          $("#modal1").show();
-        
-          var APIKey = "fb7ea89c26de6962a04a6bdfdf2764d1";
+//   $(".searchBtn").on("click", function(event){
+//     var inputVal = "";
+//      event.preventDefault();
+//      $(".searchContent").empty();
+//      inputVal = $("input:text").val().trim();
+//      console.log(inputVal);
+//      console.log(typeof inputVal);
+//      if(inputVal != "" && inputVal !=null){
 
-          var URL = "https://cors-anywhere.herokuapp.com/http://api.serpstack.com/search?access_key="  + APIKey + "&query=" + inputVal;
-          console.log(URL);
-          var result = '';
-        $.ajax({
+//           $('.modal').modal();
+        
+//           var APIKey = "fb7ea89c26de6962a04a6bdfdf2764d1";
+
+//           var URL = "https://cors-anywhere.herokuapp.com/http://api.serpstack.com/search?access_key="  + APIKey + "&query=" + inputVal;
+//           console.log(URL);
+        
+//         $.ajax({
           
-          url: URL,
-          contentType: 'application/json',
-          success: function (serpResponse) {
-                serpResponse.organic_results.forEach(res => {
-                  result = `
-                      <a href='${res.url}' target=_blank><h4 class = 'result-title'>${res.title} </h4></a>
-                      <p class = 'result url'>${res.url}</p> 
-                      <p class = 'result snippet'>${res.snippet}</p>`
-                $(".searchContent").append(result);
-              });
-              }
-        });
-      }else{
-        $("#modal1").hide();
-        $("input:text").val("Search here");
-        $("#search").on("click", function(){
-          $("input:text").val("");
-        });
-      }
-  });
+//           url: URL,
+//           contentType: 'application/json',
+//           success: function (serpResponse) {
+//                 serpResponse.organic_results.forEach(res => {
+//                   var result = `
+//                       <a href='${res.url}' target=_blank><h4 class = 'result-title'>${res.title} </h4></a>
+//                       <p class = 'result url'>${res.url}</p> 
+//                       <p class = 'result snippet'>${res.snippet}</p>`
+//                 $(".searchContent").append(result);
+//               });
+//               }
+//         });
+//       }else{
+//         $('.modal').hide();
+   
+//       }
+//   });
 });
 }
+
+
+// function onchangeFunction(val){
+//   inputVal = val;
+//   console.log(inputVal);
+// }
 
 // APOD Button Click
 $(document).ready(function () {
