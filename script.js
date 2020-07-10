@@ -24,7 +24,7 @@ function homePage(){
         mainBlock.append(divMain);
 
         var hrefValue =[];
-        var searches = ["Nasa Space Mission", "Satellite Launch", "Planets", "Mars", "Mars Rover", "Solar System", "Galaxy", "Asteroids"];
+        var searches = ["Nasa Space Mission", "Satellite Launch", "Perseverance rover", "Mars", "Mars Rover", "Solar System", "Galaxy", "Asteroids"];
 
         var randomSearch = Math.floor(Math.random() * (searches.length));
         console.log(searches[randomSearch]);
@@ -80,28 +80,35 @@ function homePage(){
      event.preventDefault();
      var inputVal = $("input:text").val().trim();
      console.log(inputVal);
-    //  if(inputVal != ""){
- 
-    //  }
-     var APIKey = "fb7ea89c26de6962a04a6bdfdf2764d1";
+     if(inputVal != ""){
+          $("#modal1").show();
+        
+          var APIKey = "fb7ea89c26de6962a04a6bdfdf2764d1";
 
-     var URL = "https://cors-anywhere.herokuapp.com/http://api.serpstack.com/search?access_key="  + APIKey + "&query=" + inputVal;
-     console.log(URL);
-     var result = '';
-  $.ajax({
-    
-    url: URL,
-    contentType: 'application/json',
-    success: function (serpResponse) {
-          serpResponse.organic_results.forEach(res => {
-            result = `
-                <a href='${res.url}' target=_blank><h4 class = 'result-title'>${res.title} </h4></a>
-                <p class = 'result url'>${res.url}</p> 
-                <p class = 'result snippet'>${res.snippet}</p>`
-          $(".searchContent").append(result);
+          var URL = "https://cors-anywhere.herokuapp.com/http://api.serpstack.com/search?access_key="  + APIKey + "&query=" + inputVal;
+          console.log(URL);
+          var result = '';
+        $.ajax({
+          
+          url: URL,
+          contentType: 'application/json',
+          success: function (serpResponse) {
+                serpResponse.organic_results.forEach(res => {
+                  result = `
+                      <a href='${res.url}' target=_blank><h4 class = 'result-title'>${res.title} </h4></a>
+                      <p class = 'result url'>${res.url}</p> 
+                      <p class = 'result snippet'>${res.snippet}</p>`
+                $(".searchContent").append(result);
+              });
+              }
         });
-        }
-   });
+      }else{
+        $("#modal1").hide();
+        $("input:text").val("Search here");
+        $("#search").on("click", function(){
+          $("input:text").val("");
+        });
+      }
   });
 });
 }
