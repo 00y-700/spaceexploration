@@ -109,12 +109,16 @@ a:hover {
 }
 
 .wikiInfo {
-    padding: 3%;
-    margin: 2%;
+    padding: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+    /* margin: 2%; */
     font-weight: normal;
     font-size: 16px;
 }
-
+.planet-pic {
+    padding-top: 1%;
+}
 /* Common Media Queries - index.html */
 @media screen and (max-width: 1251px) and (min-width: 1120px){
     .Btn {      

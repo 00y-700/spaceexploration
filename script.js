@@ -266,7 +266,7 @@ $(".spaceInfoBtn").on("click", function(event){
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty(); 
     
-    var spaceInfo = $(".spaceInfo").text("Space Information");
+    var spaceInfo = $(".spaceInfo").text("Planet Information");
     var div = $("<div id='spaceInfoContent'>");
     var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/mercury.jpg' data-planet='Mercury_(planet)'>Mercury</a>");
     var venus = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/venus.jpg' data-planet='Venus'>Venus</a>");
