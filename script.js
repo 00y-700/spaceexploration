@@ -54,8 +54,8 @@ function homePage(){
                 var title = response1[k].slice(36,lastInstance);
 
                 var video = function (k) {
-                    return ('<div class="video">' +
-                        '<p class="title-video" >' + title + '</p>' + '<video width="320" height="240" controls>' +
+                    return ('<div class="video video-container" style="overflow-x:auto;>' +
+                        '<p class="title-video" >' + title + '</p>' + '<video class="responsive-video" width="320" height="240" controls>' +
                         '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
       
                         '</div>');
@@ -170,7 +170,7 @@ $(".localHubbleViewBtn").on("click", function(event){
     var hubbleView = $(".localHubbleView").text("Live Hubble View");
     var hubbleWindow = $("<div id=hubbleWindow>");
     var hubbleTitle = $("<div class='hubbleTitle'></div>");
-    var hubbleImage = $("<img class='hubbleImage'>");
+    var hubbleImage = $("<img class='responsive-img hubbleImage'>");
     var hubbleDescription = $("<div class='hubbleDescription'></div>");
 
     
@@ -282,6 +282,7 @@ $(".spaceInfoBtn").on("click", function(event){
 
     div.append(mercury).append(venus).append(earth).append(mars).append(jupiter).append(saturn).append(neptune).append(uranus);
     spaceInfo.append(div);
+    spaceInfo.append(`<img class='responsive-img' src='photos/solarsystem.png'>Source: Wikipedia.org</img>`);
     
     $(document).ready(function() {
         
