@@ -125,11 +125,10 @@ $(document).ready(function () {
   "By denying scientific principles, one may maintain any paradox. -Galileo Galilei",
       ]
    
-      $("#quoteBtn").on("click", function() {
+      $(".quoteBtn").on("click", function() {
         var randomNumber = Math.floor(Math.random() * (quotes.length));
         $("#quoteDisplay").text(quotes[randomNumber])});
   });
-  
 
 // Local Hubble View Button Click
 $(".localHubbleViewBtn").on("click", function(event){
