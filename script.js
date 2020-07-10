@@ -10,7 +10,7 @@ function homePage(){
     $(document).ready(function () {
   
         var divMain = $("<div class='homePageContent'>")
-        var homePageContent = $("<p class='homePageTitle' style='font-size: 20px; font-weight: bold; padding:10px'>");
+        var homePageContent = $("<p class='homePageTitle' style='font-size: 20px; font-weight: bold;'>");
         homePageContent.text("Top Stories");
         divMain.append(homePageContent);
  
@@ -24,7 +24,7 @@ function homePage(){
         // mainBlock.append(divMain);
 
         var hrefValue =[];
-        var searches = ["Nasa Space Mission", "Satellite Launch", "Perseverance rover", "Mars", "Mars Rover", "Solar System", "Galaxy", "Asteroids"];
+        var searches = ["Nasa Space Mission", "Satellite Launch", "Perseverance rover", "Mars", "Mars Rover", "Solar System", "Galaxy"];
 
         var randomSearch = Math.floor(Math.random() * (searches.length));
         console.log(searches[randomSearch]);
@@ -51,14 +51,40 @@ function homePage(){
                 if(response1[k].endsWith("~orig.mp4")){
                
                 var lastInstance = response1[k].lastIndexOf("/");
-                var title = response1[k].slice(36,lastInstance);
-
+                var titleWithSlash = response1[k].slice(36,lastInstance);
+                const searchRegExp = /_/g;
+                const replaceWith = ' ';
+                var title = titleWithSlash.replace(searchRegExp, replaceWith);
+                // width="320" height="240"
+                // style="overflow-x:auto;
                 var video = function (k) {
-                    return ('<div class="video">' +
-                        '<p class="title-video" >' + title + '</p>' + '<video width="320" height="240" controls>' +
+                    // return (
+                    //   '<div class="video video-container">' +
+                    
+                    //   '<video class="responsive-video" width="320" height="240" controls>' +
+                    //   '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
+    
+                    //   '<p class="title-video" >' + title + '</p>' + 
+                      
+                    //   '</div>');
+
+                     return (
+                       '<div class="overall">'+
+                        '<div class= "video">'+
+                        '<video width = "320" height = "240" controls>' +
                         '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
-      
-                        '</div>');
+    
+                        '</div>'+
+                        '<p class="title-video" >' + title + '</p>' +
+                         '</div>');
+                  //     <div class = "video-container">
+                  //     <video  width = "300" height = "200" controls autoplay>
+                  //        <source src = "http://www.tutorialspoint.com/html5/foo.ogg" type = "video/ogg" />
+                  //        <source src = "http://www.tutorialspoint.com/html5/foo.mp4" type = "video/mp4" />
+                  //        Your browser does not support the video element.
+                  //     </video>
+                  //  </div>
+                       
                     }
                     
                     divMain.append(video(k));
@@ -112,12 +138,6 @@ function homePage(){
 });
 }
 
-
-// function onchangeFunction(val){
-//   inputVal = val;
-//   console.log(inputVal);
-// }
-
 // APOD Button Click
 $(document).ready(function () {
 
@@ -135,7 +155,7 @@ $(document).ready(function () {
     event.preventDefault();
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
-    
+    $('#cse').empty();
     var apod = $(".apod").text("Quote Generator");
     var quote = $("<div id=quoteDisplay>");
     var quoteBtn = $("<button class= 'btn quoteBtn'>Gimme More</button>")
@@ -172,7 +192,7 @@ $(".localHubbleViewBtn").on("click", function(event){
     event.preventDefault();
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
-    
+    $('#cse').empty();
     var hubbleView = $(".localHubbleView").text("Live Hubble View");
     var hubbleWindow = $("<div id=hubbleWindow>");
     var hubbleTitle = $("<div class='hubbleTitle'></div>");
@@ -206,7 +226,7 @@ $(".newEarthObjectsBtn").on("click", function(event){
     $(".mainBlock-Contents").empty();
   
     $(".nearEarthObjects").empty();
-
+    $('#cse').empty();
     var today = moment().format("YYYY-MM-DD");
     console.log(today);
     var nearEarthURL = "https://api.nasa.gov/neo/rest/v1/feed?start_date="+ today + "&end_date=" + today + "END_DATE&api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ";
@@ -256,7 +276,7 @@ $(".marsWeatherBtn").on("click", function(event){
     event.preventDefault();
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
-  
+    $('#cse').empty();
     $(".marsWeather").text("Mars Weather");
     
 });
@@ -267,7 +287,7 @@ $(".spaceInfoBtn").on("click", function(event){
    
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty(); 
-    
+    $('#cse').empty();
     var spaceInfo = $(".spaceInfo").text("Planet Information");
     var div = $("<div id='spaceInfoContent'>");
     var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/mercury.jpg' data-planet='Mercury_(planet)'>Mercury</a>");
