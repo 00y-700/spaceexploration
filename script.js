@@ -102,7 +102,7 @@ $(document).ready(function () {
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
     
-    var apod = $(".apod").text("About APOD");
+    var apod = $(".apod").text("Quote Generator");
     var quote = $("<div id=quoteDisplay>");
     var quoteBtn = $("<button class= 'btn quoteBtn'>Gimme More</button>")
     apod.append(quote);
@@ -116,7 +116,7 @@ $(document).ready(function () {
   "There is no sound in outer space",
   "Never limit yourself because of others limited imagination; never limit others becasuse of your own limited imagination. -Mae Jemison",
   "Earth is a small town with many neighborhoods in a very big universe. -Ron Garan",
-  "I looked and I looded but I didn't see God. -Yuri Gagarin",
+  "I looked and I looked but I didn't see God. -Yuri Gagarin",
   "Gravity hurts. -Victor Alexandrow",
   "We are limited only by our imagination. -Ron Garan",
   "In the context of general relativity, space almost is a substance. It can bend and twist and stretch, and probably the best way to thing about space is to just kind of imagine a big piece of rubber that you can pull and twist and bend. -Alan Guth",
@@ -137,7 +137,7 @@ $(".localHubbleViewBtn").on("click", function(event){
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
     
-    var hubbleView = $(".localHubbleView").text("Local Hubble View");
+    var hubbleView = $(".localHubbleView").text("Live Hubble View");
     var hubbleWindow = $("<div id=hubbleWindow>");
     var hubbleTitle = $("<div class='hubbleTitle'></div>");
     var hubbleImage = $("<img class='hubbleImage'>");
@@ -169,7 +169,49 @@ $(".newEarthObjectsBtn").on("click", function(event){
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
   
-    $(".nearEarthObjects").text("Near Earth Objects");
+    $(".nearEarthObjects").empty();
+
+    var today = moment().format("YYYY-MM-DD");
+    console.log(today);
+    var nearEarthURL = "https://api.nasa.gov/neo/rest/v1/feed?start_date="+ today + "&end_date=" + today + "END_DATE&api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ";
+    console.log(nearEarthURL);
+
+    $.ajax({
+        url: nearEarthURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response);
+        var nameFromEarth = (response.near_earth_objects[today][0].name);
+        console.log(nameFromEarth);
+        var sizeFromEarth = (response.near_earth_objects[today][0].estimated_diameter.feet.estimated_diameter_max);
+        console.log(sizeFromEarth);
+        var sizeFixed = sizeFromEarth.toFixed(2);
+        console.log(sizeFixed);
+        var milesFromEarth = (response.near_earth_objects[today][0].close_approach_data[0].miss_distance.miles);
+        console.log(milesFromEarth);
+        // var milesFixed = milesFromEarth.toFixed(2);
+        // console.log(milesFixed);
+        var hitEarth = (response.near_earth_objects[today][0].is_potentially_hazardous_asteroid);
+        console.log(hitEarth);
+
+        var nearEarthObjects = $(".nearEarthObjects");
+        nearEarthObjects.append($("<h2>").text("Nearest Asteroid to Earth!").css("color", "red"));
+        nearEarthObjects.append($("<h3>").text("What is this Asteroid's Name?"));
+        nearEarthObjects.append(nameFromEarth);
+        nearEarthObjects.append($("<h3>").text("How big is " + nameFromEarth + "?"));
+        nearEarthObjects.append(sizeFixed + " feet in diameter");
+        nearEarthObjects.append($("<h3>").text("How far is it from earth?"));
+        nearEarthObjects.append(milesFromEarth + " miles away");
+        nearEarthObjects.append($("<h3>").text("The real question...is it going to hit Earth?"));
+
+        if (hitEarth === false) {
+          nearEarthObjects.append($("<p>").text("Just a fly-by!"))
+            
+        } else if (hitEarth =! false) {
+          nearEarthObjects.append($("<h2>").text("Potentially. Let's keep an eye in the sky!"))
+        };
+        
+      });
     
 });
 
@@ -225,25 +267,31 @@ $(".spaceInfoBtn").on("click", function(event){
     
     var spaceInfo = $(".spaceInfo").text("Space Information");
     var div = $("<div id='spaceInfoContent'>");
-    var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Mercury_(planet)'>Mercury</a>");
-    var venus = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Venus'>Venus</a>");
-    var earth = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Earth'>Earth</a>");
-    var mars = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Mars'>Mars</a>");
-    var jupiter = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Jupiter'>Jupiter</a>");
-    var saturn = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Saturn'>Saturn</a>");
-    var neptune = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Neptune'>Neptune</a>");
-    var uranus = $("<a class='waves-effect waves-light btn planet-btn' data-planet='Uranus'>Uranus</a>");
-
+    var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/mercury.jpg' data-planet='Mercury_(planet)'>Mercury</a>");
+    var venus = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/venus.jpg' data-planet='Venus'>Venus</a>");
+    var earth = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/earth.png' data-planet='Earth'>Earth</a>");
+    var mars = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/mars.jpg' data-planet='Mars'>Mars</a>");
+    var jupiter = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/jupiter.jpg' data-planet='Jupiter'>Jupiter</a>");
+    var saturn = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/saturn.png' data-planet='Saturn'>Saturn</a>");
+    var neptune = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/neptune.png' data-planet='Neptune'>Neptune</a>");
+    var uranus = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/uranus.jpg' data-planet='Uranus'>Uranus</a>");
+    var planetPic = $("<div class='planet-pic'></div>")
     var wiki = $("<div class='wikiInfo'></div>");
+
 
     div.append(mercury).append(venus).append(earth).append(mars).append(jupiter).append(saturn).append(neptune).append(uranus);
     spaceInfo.append(div);
+    spaceInfo.append(planetPic)
     spaceInfo.append(wiki);
     $(document).ready(function() {
         $(".planet-btn").on("click", function() {
             console.log($(this).attr("data-planet"))
             var planet = $(this).attr("data-planet")
+            console.log($(this).attr("data-img"))
+            var planetImg = $(this).attr("data-img")
             var Wikiurl = `http://en.wikipedia.org/w/api.php?format=json&exintro=True&action=query&titles=${planet}&prop=extracts&explaintext=True&origin=*`;
+          
+            $(".planet-pic").empty().append(`<img src='${planetImg}'></img>`);
 
           $.ajax({
             url: Wikiurl,       
@@ -252,8 +300,9 @@ $(".spaceInfoBtn").on("click", function(event){
           
             var pageId = Object.keys(response.query.pages)[0];
             var intro = response.query.pages[pageId].extract
+
           
-            $(".wikiInfo").empty().append(`<div class="box"> <p>${intro}</p> </div>`);
+            $(".wikiInfo").empty().append(`<div class="box"> <p>${intro}</p> <p id='source-text'>Source: Wikipedia.org</p></div>`);
           });
           })
     }) 
