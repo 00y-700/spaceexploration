@@ -219,8 +219,8 @@ $(".newEarthObjectsBtn").on("click", function(event){
         console.log(sizeFixed);
         var milesFromEarth = (response.near_earth_objects[today][0].close_approach_data[0].miss_distance.miles);
         console.log(milesFromEarth);
-        // var milesFixed = milesFromEarth.toFixed(2);
-        // console.log(milesFixed);
+        var milesFixed = parseFloat(milesFromEarth).toFixed(2);
+        console.log(milesFixed);
         var hitEarth = (response.near_earth_objects[today][0].is_potentially_hazardous_asteroid);
         console.log(hitEarth);
 
@@ -231,7 +231,7 @@ $(".newEarthObjectsBtn").on("click", function(event){
         nearEarthObjects.append($("<h3>").text("How big is " + nameFromEarth + "?"));
         nearEarthObjects.append(sizeFixed + " feet in diameter");
         nearEarthObjects.append($("<h3>").text("How far is it from earth?"));
-        nearEarthObjects.append(milesFromEarth + " miles away");
+        nearEarthObjects.append(milesFixed + " miles away");
         nearEarthObjects.append($("<h3>").text("The real question...is it going to hit Earth?"));
 
         if (hitEarth === false) {
