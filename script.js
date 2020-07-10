@@ -267,6 +267,7 @@ $(".spaceInfoBtn").on("click", function(event){
     
     var spaceInfo = $(".spaceInfo").text("Planet Information");
     var div = $("<div id='spaceInfoContent'>");
+    var spaceContent = $("<div id='spaceContent'>");
     var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/mercury.jpg' data-planet='Mercury_(planet)'>Mercury</a>");
     var venus = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/venus.jpg' data-planet='Venus'>Venus</a>");
     var earth = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/earth.png' data-planet='Earth'>Earth</a>");
@@ -281,8 +282,7 @@ $(".spaceInfoBtn").on("click", function(event){
 
     div.append(mercury).append(venus).append(earth).append(mars).append(jupiter).append(saturn).append(neptune).append(uranus);
     spaceInfo.append(div);
-    spaceInfo.append(planetPic)
-    spaceInfo.append(wiki);
+    
     $(document).ready(function() {
         $(".planet-btn").on("click", function() {
             console.log($(this).attr("data-planet"))
@@ -291,6 +291,10 @@ $(".spaceInfoBtn").on("click", function(event){
             var planetImg = $(this).attr("data-img")
             var Wikiurl = `http://en.wikipedia.org/w/api.php?format=json&exintro=True&action=query&titles=${planet}&prop=extracts&explaintext=True&origin=*`;
           
+            spaceInfo.append(spaceContent);
+            spaceContent.append(planetPic)
+            spaceContent.append(wiki);
+
             $(".planet-pic").empty().append(`<img src='${planetImg}'></img>`);
 
           $.ajax({
