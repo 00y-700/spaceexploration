@@ -55,7 +55,7 @@ function homePage(){
 
                 var video = function (k) {
                     return ('<div class="video video-container" style="overflow-x:auto;>' +
-                        '<p class="title-video" >' + title + '</p>' + '<video class="responsive-video" width="320" height="240" controls>' +
+                        `<p class="title-video">${title}</p>` + '<video class="responsive-video" width="320" height="240" controls>' +
                         '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
       
                         '</div>');

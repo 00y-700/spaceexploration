@@ -63,13 +63,22 @@ a:hover {
  
 }
 
-.title-video{
-    width: 265px;
+.title-video {
+    /* width: 85%; */
+    /* text-overflow: ellipsis;
+    max-width: 250px; */
+    border: solid;
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 5ch;
 }
-
+.video-container {
+    width: 75%;
+    max-width: 50ch;
+}
 .video {
-    border : 1px solid black;
+    /* border : 1px solid black; */
     margin: 10px;
     padding:14px;
     display: inline-table;
