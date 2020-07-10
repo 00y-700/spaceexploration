@@ -170,7 +170,49 @@ $(".newEarthObjectsBtn").on("click", function(event){
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
   
-    $(".nearEarthObjects").text("Near Earth Objects");
+    $(".nearEarthObjects").empty();
+
+    var today = moment().format("YYYY-MM-DD");
+    console.log(today);
+    var nearEarthURL = "https://api.nasa.gov/neo/rest/v1/feed?start_date="+ today + "&end_date=" + today + "END_DATE&api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ";
+    console.log(nearEarthURL);
+
+    $.ajax({
+        url: nearEarthURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response);
+        var nameFromEarth = (response.near_earth_objects[today][0].name);
+        console.log(nameFromEarth);
+        var sizeFromEarth = (response.near_earth_objects[today][0].estimated_diameter.feet.estimated_diameter_max);
+        console.log(sizeFromEarth);
+        var sizeFixed = sizeFromEarth.toFixed(2);
+        console.log(sizeFixed);
+        var milesFromEarth = (response.near_earth_objects[today][0].close_approach_data[0].miss_distance.miles);
+        console.log(milesFromEarth);
+        // var milesFixed = milesFromEarth.toFixed(2);
+        // console.log(milesFixed);
+        var hitEarth = (response.near_earth_objects[today][0].is_potentially_hazardous_asteroid);
+        console.log(hitEarth);
+
+        var nearEarthObjects = $(".nearEarthObjects");
+        nearEarthObjects.append($("<h2>").text("Nearest Asteroid to Earth!").css("color", "red"));
+        nearEarthObjects.append($("<h3>").text("What is this Asteroid's Name?"));
+        nearEarthObjects.append(nameFromEarth);
+        nearEarthObjects.append($("<h3>").text("How big is " + nameFromEarth + "?"));
+        nearEarthObjects.append(sizeFixed + " feet in diameter");
+        nearEarthObjects.append($("<h3>").text("How far is it from earth?"));
+        nearEarthObjects.append(milesFromEarth + " miles away");
+        nearEarthObjects.append($("<h3>").text("The real question...is it going to hit Earth?"));
+
+        if (hitEarth === false) {
+          nearEarthObjects.append($("<p>").text("Just a fly-by!"))
+            
+        } else if (hitEarth =! false) {
+          nearEarthObjects.append($("<h2>").text("Potentially. Let's keep an eye in the sky!"))
+        };
+        
+      });
     
 });
 
