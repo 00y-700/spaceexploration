@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Space Exploration</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
  
@@ -40,7 +40,7 @@
        <div class = "container"><br>
         <br>
          <h2 class="header center teal-text text-lighten-2">Explore Space</h2>
-         <br><br><br>
+         <br><br><br><br><br><br><br>
          <h6 class="header center teal-text text-lighten-2">Our Website "Explore Space" walks through some interesting cool facts regarding planets, asteroids, comets, solar system, galaxy and even more.</h6>
        </div>
       
@@ -72,8 +72,6 @@
 
               <li> <a class="homeBtn Btn"><i class="material-icons">home</i></a></li>
 
-              <li> <a class="apodBtn Btn">Quote Generator</a></li>
-
               <li><a class="localHubbleViewBtn Btn">Live Hubble View</a></li>
 
               <li><a class="newEarthObjectsBtn Btn">Near Earth Objects</a></li>
@@ -83,6 +81,8 @@
               <!-- <li> <a class="spaceMissionBtn Btn">Space Missions</a></li> -->
 
               <li> <a class="spaceInfoBtn Btn">Planet Information</a></li>
+
+              <li> <a class="apodBtn Btn">Quote Generator</a></li>
   
               </ul>
             </div>
@@ -91,8 +91,6 @@
           <ul class="sidenav" id="mobile-demo">
 
             <li> <a class="homeBtn Btn"><i class="material-icons">home</i></a></li>
-            
-            <li><a class="apodBtn Btn">About APOD</a></li>
 
             <li><a class="localHubbleViewBtn Btn">Live Hubble View</a></li>
 
@@ -102,10 +100,23 @@
 
             <!-- <li><a class="spaceMissionBtn Btn">Space Missions</a></li> -->
 
-            <li><a class="spaceInfoBtn Btn">Space Information</a></li>
+            <li><a class="spaceInfoBtn Btn">Planet Information</a></li>
+
+            <li><a class="apodBtn Btn">Quote Generator</a></li>
           </div>
           
-          
+         <div id= 'modalContainer'>
+          <div id='modal1' class='modal'>
+            <div class='modal-content'>
+            <h4>Search Results <span ><i style="margin-right: -80px; float:right" class='modal-close material-icons'>close</i></span>  </h4>   
+            <!-- <a href="#!" class="modal-close"> -->
+              <hr>
+            <div class = "searchContent"></div>
+            </div>
+         
+            </div>
+          </div>
+  
           <!-- <div class = "side-block container">
             <a class="waves-effect waves-light apodBtn btn">About APOD</a>
             <a class="waves-effect waves-light localHubbleViewBtn btn">Local Hubble View</a>
@@ -117,7 +128,6 @@
           </div> -->
         </div>
      
-        
           <div class="main-block col s12 m8 l9"> 
             <div class = "mainBlock-Contents center-align apod">
 

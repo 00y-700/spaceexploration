@@ -1,44 +1,14 @@
-/* Common Styling - index.html */
-/* nav{
-    text-decoration: none;
-} */
-
 .parallax-container{
     height:350px;
   
 }
 
- /* input[type=text]:not(.browser-default){ 
-    width: 600px;
-    float:right;
-   
-   
- } 
-.search{
-    float:right;
-    /* margin-right: -570px; */
-    
-    form{
-        width:400px;
-        float: right;
-        margin-top: -85px; 
-    }
+form{
+    width:400px;
+    float: right;
+    margin-top: -85px; 
+}
 
-    /* .material-icons{
-        margin-bottom: -15px;
-        /* margin-left: 340px; */
-   /* } */
-
-/* .waves-effect{
-    display:block;
-    margin:15px;
-    padding: 5px 8px;
-    width:90%;
-} */
-
-/* .nav-wrapper{
-    width:100%;
-} */
 
 .side-block {
     
@@ -47,7 +17,7 @@
      
 }
 
-
+/* Styling for main Buttons -5 */
 .Btn{
     width:200px;
     height:50px;
@@ -59,9 +29,18 @@
     width:15px;
 }
 
+/* Styling for contents of HomePage */
+.homePageContent{
+    /* border : 1px solid black; */
+    margin: 10px;
+    padding:20px;
+  
+}
+
 .nav-wrapper{
     background-color: rgb(49, 48, 48);
 }
+
 .mainBlock-Contents{
     /* background-color: rgb(255, 248, 206); */
     font-weight: bold;
@@ -84,8 +63,38 @@ a:hover {
  
 }
 
-/* Styling - APOD */
+.title-video{
+    width: 265px;
+    text-overflow: ellipsis;
+}
 
+.video {
+    border : 1px solid black;
+    margin: 10px;
+    padding:14px;
+    display: inline-table;
+    /* height:340px; */
+}
+
+/* Modal Search result Display Styling */
+.result{
+    font-size: 15px;
+}
+
+.result-title{
+    color: blue;
+}
+
+.url{
+     color: green;
+}
+
+/* Styling - APOD */
+#quoteDisplay {
+    font-size: 16px;
+    padding: 1%;
+    font-weight: normal;
+}
 
 /* Styling - Local Hubble View */
 .hubbleDescription {
@@ -108,13 +117,20 @@ a:hover {
     margin: 12px;
 }
 
+#spaceContent {
+    border: solid;
+}
 .wikiInfo {
-    padding: 3%;
-    margin: 2%;
+    padding: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    /* margin: 2%; */
     font-weight: normal;
     font-size: 16px;
 }
-
+.planet-pic {
+    padding-top: 1%;
+}
 /* Common Media Queries - index.html */
 @media screen and (max-width: 1251px) and (min-width: 1120px){
     .Btn {      
@@ -130,7 +146,7 @@ a:hover {
 @media screen and (max-width: 1119px) and (min-width: 1046px){
     .Btn  {      
         width: 165px;
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .homeBtn{
@@ -142,7 +158,7 @@ a:hover {
 
 @media screen and (max-width: 1045px) and (min-width: 993px){
     .Btn  {      
-        width: 148px; 
+        width: 140px; 
         font-size: 12px;
     }
 
@@ -152,12 +168,6 @@ a:hover {
 
     }
 
-/* @media screen and  (max-width: 800px) {
-   form{
-        width:100%;
-        margin-top: -25px; 
-    }
-} */
 
 @media screen and  (max-width: 780px) and (min-width: 600px) {
     .mainBlock-Contents{
@@ -175,6 +185,6 @@ a:hover {
     form{
          width:100%;
          margin-top: -25px; 
-     }
- }
+     } 
+  } 
   
