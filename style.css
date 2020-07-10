@@ -112,10 +112,13 @@ a:hover {
     margin: 12px;
 }
 
+#spaceContent {
+    border: solid;
+}
 .wikiInfo {
     padding: 1%;
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-left: 1%;
+    padding-right: 1%;
     /* margin: 2%; */
     font-weight: normal;
     font-size: 16px;
