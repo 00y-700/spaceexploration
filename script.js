@@ -226,18 +226,17 @@ $(".spaceInfoBtn").on("click", function(event){
     
     var spaceInfo = $(".spaceInfo").text("Space Information");
     var div = $("<div id='spaceInfoContent'>");
-    var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-img='mercurypic' data-planet='Mercury_(planet)'>Mercury</a>");
-    var venus = $("<a class='waves-effect waves-light btn planet-btn' data-img='venuspic' data-planet='Venus'>Venus</a>");
-    var earth = $("<a class='waves-effect waves-light btn planet-btn' data-img='earthpic' data-planet='Earth'>Earth</a>");
-    var mars = $("<a class='waves-effect waves-light btn planet-btn' data-img='marspic' data-planet='Mars'>Mars</a>");
-    var jupiter = $("<a class='waves-effect waves-light btn planet-btn' data-img='jupiterpic' data-planet='Jupiter'>Jupiter</a>");
-    var saturn = $("<a class='waves-effect waves-light btn planet-btn' data-img='saturnpic' data-planet='Saturn'>Saturn</a>");
-    var neptune = $("<a class='waves-effect waves-light btn planet-btn' data-img='neptunepic' data-planet='Neptune'>Neptune</a>");
-    var uranus = $("<a class='waves-effect waves-light btn planet-btn' data-img='uranuspic' data-planet='Uranus'>Uranus</a>");
-    var planetPic = $("<div class='planet-pic'>IMG</div>")
+    var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/mercury.jpg' data-planet='Mercury_(planet)'>Mercury</a>");
+    var venus = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/venus.jpg' data-planet='Venus'>Venus</a>");
+    var earth = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/earth.png' data-planet='Earth'>Earth</a>");
+    var mars = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/mars.jpg' data-planet='Mars'>Mars</a>");
+    var jupiter = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/jupiter.jpg' data-planet='Jupiter'>Jupiter</a>");
+    var saturn = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/saturn.png' data-planet='Saturn'>Saturn</a>");
+    var neptune = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/neptune.png' data-planet='Neptune'>Neptune</a>");
+    var uranus = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/uranus.jpg' data-planet='Uranus'>Uranus</a>");
+    var planetPic = $("<div class='planet-pic'></div>")
     var wiki = $("<div class='wikiInfo'></div>");
 
-    // var mercurypic = $("src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg/800px-Mercury_in_color_-_Prockter07-edit1.jpg'");
 
     div.append(mercury).append(venus).append(earth).append(mars).append(jupiter).append(saturn).append(neptune).append(uranus);
     spaceInfo.append(div);
@@ -248,14 +247,11 @@ $(".spaceInfoBtn").on("click", function(event){
             console.log($(this).attr("data-planet"))
             var planet = $(this).attr("data-planet")
             console.log($(this).attr("data-img"))
-            // var planetImg = $(this).attr("data-img")
+            var planetImg = $(this).attr("data-img")
             var Wikiurl = `http://en.wikipedia.org/w/api.php?format=json&exintro=True&action=query&titles=${planet}&prop=extracts&explaintext=True&origin=*`;
           
-          // if("data-image" === "mercurypic") {
-          //   $(".planet-pic").empty().append(`<img src='800px-Mercury_in_color_-_Prockter07-edit1.jpg'></img>`);}
-          //   // $(".planet-pic").empty().append(`<img src='${planetImg}'></img>`);
-            
-            // $(".planet-pic").empty().append(`<img src='800px-Mercury_in_color_-_Prockter07-edit1.jpg'></img>`);
+            $(".planet-pic").empty().append(`<img src='${planetImg}'></img>`);
+
           $.ajax({
             url: Wikiurl,       
             method: "GET",     
