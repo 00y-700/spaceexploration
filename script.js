@@ -254,7 +254,7 @@ $(".marsWeatherBtn").on("click", function(event){
     var marsWeather = $(".marsWeather").text("Mars Weather");
     
     var queryURL = "https://api.nasa.gov/insight_weather/?api_key=unepUpoJglDuNOxtOuPToAdKApZ40RRSvfwIHto6&feedtype=json&ver=1.0";
-    var weatherImage = $("<div><iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe>");
+    var weatherImage = $("<div><iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe><br><a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>List of Current Humans on Mars</a>");
     marsWeather.append(weatherImage)
 });
 
@@ -284,6 +284,7 @@ $(".spaceInfoBtn").on("click", function(event){
     spaceInfo.append(div);
     
     $(document).ready(function() {
+        
         $(".planet-btn").on("click", function() {
             console.log($(this).attr("data-planet"))
             var planet = $(this).attr("data-planet")
