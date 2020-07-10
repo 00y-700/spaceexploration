@@ -14,15 +14,6 @@ function homePage(){
         homePageContent.text("Top Stories");
         divMain.append(homePageContent);
  
-        // var div = $("<form>");
-      
-        // var input = $("<input type='text'  id='search' name='Textsearch' placeholder='Search here'>");
-        // var button = $("<a href='#modal1' class='btn modal-trigger searchBtn'> <i class='material-icons'>search</i>");
-        // div.append(input).append(button);
-        // homePageContent.append(div);
-        // divMain.append(div);
-        // mainBlock.append(divMain);
-
         var hrefValue =[];
         var searches = ["Nasa Space Mission", "Satellite Launch", "Perseverance rover", "Mars", "Mars Rover", "Solar System", "Galaxy"];
 
@@ -58,33 +49,15 @@ function homePage(){
                 // width="320" height="240"
                 // style="overflow-x:auto;
                 var video = function (k) {
-                    // return (
-                    //   '<div class="video video-container">' +
-                    
-                    //   '<video class="responsive-video" width="320" height="240" controls>' +
-                    //   '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
-    
-                    //   '<p class="title-video" >' + title + '</p>' + 
-                      
-                    //   '</div>');
 
-                     return (
+                  return (
                        '<div class="overall">'+
                         '<div class= "video">'+
                         '<video width = "320" height = "240" controls>' +
                         '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
-    
                         '</div>'+
                         '<p class="title-video" >' + title + '</p>' +
                          '</div>');
-                  //     <div class = "video-container">
-                  //     <video  width = "300" height = "200" controls autoplay>
-                  //        <source src = "http://www.tutorialspoint.com/html5/foo.ogg" type = "video/ogg" />
-                  //        <source src = "http://www.tutorialspoint.com/html5/foo.mp4" type = "video/mp4" />
-                  //        Your browser does not support the video element.
-                  //     </video>
-                  //  </div>
-                       
                     }
                     
                     divMain.append(video(k));
@@ -98,43 +71,6 @@ function homePage(){
         }
     }
 });
-
-
-//   $(".searchBtn").on("click", function(event){
-//     var inputVal = "";
-//      event.preventDefault();
-//      $(".searchContent").empty();
-//      inputVal = $("input:text").val().trim();
-//      console.log(inputVal);
-//      console.log(typeof inputVal);
-//      if(inputVal != "" && inputVal !=null){
-
-//           $('.modal').modal();
-        
-//           var APIKey = "fb7ea89c26de6962a04a6bdfdf2764d1";
-
-//           var URL = "https://cors-anywhere.herokuapp.com/http://api.serpstack.com/search?access_key="  + APIKey + "&query=" + inputVal;
-//           console.log(URL);
-        
-//         $.ajax({
-          
-//           url: URL,
-//           contentType: 'application/json',
-//           success: function (serpResponse) {
-//                 serpResponse.organic_results.forEach(res => {
-//                   var result = `
-//                       <a href='${res.url}' target=_blank><h4 class = 'result-title'>${res.title} </h4></a>
-//                       <p class = 'result url'>${res.url}</p> 
-//                       <p class = 'result snippet'>${res.snippet}</p>`
-//                 $(".searchContent").append(result);
-//               });
-//               }
-//         });
-//       }else{
-//         $('.modal').hide();
-   
-//       }
-//   });
 });
 }
 
@@ -162,7 +98,6 @@ $(document).ready(function () {
     apod.append(quote);
     apod.append(quoteBtn);
  
-
     var quotes = [
 
         "Space, the final frontier. -Star Trek",
@@ -185,7 +120,7 @@ $(document).ready(function () {
         var randomNumber = Math.floor(Math.random() * (quotes.length));
         $("#quoteDisplay").text(quotes[randomNumber])});
   });
-  
+
 
 // Local Hubble View Button Click
 $(".localHubbleViewBtn").on("click", function(event){
@@ -196,10 +131,8 @@ $(".localHubbleViewBtn").on("click", function(event){
     var hubbleView = $(".localHubbleView").text("Live Hubble View");
     var hubbleWindow = $("<div id=hubbleWindow>");
     var hubbleTitle = $("<div class='hubbleTitle'></div>");
-    var hubbleImage = $("<img class='hubbleImage'>");
+    var hubbleImage = $("<img class='responsive-img hubbleImage'>");
     var hubbleDescription = $("<div class='hubbleDescription'></div>");
-
-    
 
     var queryURL = "https://cors-anywhere.herokuapp.com/http://hubblesite.org/api/v3/external_feed/st_live?sort=-pub_date";
 
@@ -245,8 +178,8 @@ $(".newEarthObjectsBtn").on("click", function(event){
         console.log(sizeFixed);
         var milesFromEarth = (response.near_earth_objects[today][0].close_approach_data[0].miss_distance.miles);
         console.log(milesFromEarth);
-        // var milesFixed = milesFromEarth.toFixed(2);
-        // console.log(milesFixed);
+        var milesFixed = parseFloat(milesFromEarth).toFixed(2);
+        console.log(milesFixed);
         var hitEarth = (response.near_earth_objects[today][0].is_potentially_hazardous_asteroid);
         console.log(hitEarth);
 
@@ -257,7 +190,7 @@ $(".newEarthObjectsBtn").on("click", function(event){
         nearEarthObjects.append($("<h3>").text("How big is " + nameFromEarth + "?"));
         nearEarthObjects.append(sizeFixed + " feet in diameter");
         nearEarthObjects.append($("<h3>").text("How far is it from earth?"));
-        nearEarthObjects.append(milesFromEarth + " miles away");
+        nearEarthObjects.append(milesFixed + " miles away");
         nearEarthObjects.append($("<h3>").text("The real question...is it going to hit Earth?"));
 
         if (hitEarth === false) {
@@ -277,8 +210,12 @@ $(".marsWeatherBtn").on("click", function(event){
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
     $('#cse').empty();
-    $(".marsWeather").text("Mars Weather");
-    
+   
+    var marsWeather = $(".marsWeather").text("Mars Weather");
+
+    var queryURL = "https://api.nasa.gov/insight_weather/?api_key=unepUpoJglDuNOxtOuPToAdKApZ40RRSvfwIHto6&feedtype=json&ver=1.0";
+    var weatherImage = $("<div><iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe><br><a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>List of Current Humans on Mars</a>");
+    marsWeather.append(weatherImage)
 });
 
 // Space Information
@@ -290,6 +227,7 @@ $(".spaceInfoBtn").on("click", function(event){
     $('#cse').empty();
     var spaceInfo = $(".spaceInfo").text("Planet Information");
     var div = $("<div id='spaceInfoContent'>");
+    var spaceContent = $("<div id='spaceContent'>");
     var mercury = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/mercury.jpg' data-planet='Mercury_(planet)'>Mercury</a>");
     var venus = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/venus.jpg' data-planet='Venus'>Venus</a>");
     var earth = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/earth.png' data-planet='Earth'>Earth</a>");
@@ -304,9 +242,10 @@ $(".spaceInfoBtn").on("click", function(event){
 
     div.append(mercury).append(venus).append(earth).append(mars).append(jupiter).append(saturn).append(neptune).append(uranus);
     spaceInfo.append(div);
-    spaceInfo.append(planetPic)
-    spaceInfo.append(wiki);
+    spaceInfo.append(`<img class='responsive-img' src='photos/solarsystem.png'>Source: Wikipedia.org</img>`);
+    
     $(document).ready(function() {
+        
         $(".planet-btn").on("click", function() {
             console.log($(this).attr("data-planet"))
             var planet = $(this).attr("data-planet")
@@ -314,6 +253,10 @@ $(".spaceInfoBtn").on("click", function(event){
             var planetImg = $(this).attr("data-img")
             var Wikiurl = `http://en.wikipedia.org/w/api.php?format=json&exintro=True&action=query&titles=${planet}&prop=extracts&explaintext=True&origin=*`;
           
+            spaceInfo.append(spaceContent);
+            spaceContent.append(planetPic)
+            spaceContent.append(wiki);
+
             $(".planet-pic").empty().append(`<img src='${planetImg}'></img>`);
 
           $.ajax({
@@ -345,14 +288,9 @@ $(document).on("click", 'ul a', function(event){
         if($('div a').hasClass('active')){
             $(".side-block").empty();
         }
-    // }else{
-    //     if($('div a').hasClass('active')){
-    //         $(".side-block");
-    //     }
-    }
+
+      }
   
 });
-
-
 
 homePage();
