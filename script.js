@@ -137,7 +137,6 @@ $(document).ready(function () {
     apod.append(quote);
     apod.append(quoteBtn);
  
-
     var quotes = [
 
         "Space, the final frontier. -Star Trek",
@@ -160,7 +159,7 @@ $(document).ready(function () {
         var randomNumber = Math.floor(Math.random() * (quotes.length));
         $("#quoteDisplay").text(quotes[randomNumber])});
   });
-  
+
 
 // Local Hubble View Button Click
 $(".localHubbleViewBtn").on("click", function(event){
@@ -252,8 +251,11 @@ $(".marsWeatherBtn").on("click", function(event){
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
   
-    $(".marsWeather").text("Mars Weather");
+    var marsWeather = $(".marsWeather").text("Mars Weather");
     
+    var queryURL = "https://api.nasa.gov/insight_weather/?api_key=unepUpoJglDuNOxtOuPToAdKApZ40RRSvfwIHto6&feedtype=json&ver=1.0";
+    var weatherImage = $("<div><iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe>");
+    marsWeather.append(weatherImage)
 });
 
 // Space Information
@@ -324,7 +326,7 @@ $(document).on("click", 'ul a', function(event){
     //     if($('div a').hasClass('active')){
     //         $(".side-block");
     //     }
-    }
+      }
   
 });
 
