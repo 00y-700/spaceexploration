@@ -1,14 +1,14 @@
 .parallax-container{
-    height:350px;
+    height:225px;
   
 }
 
-form{
-    width:400px;
-    float: right;
-    margin-top: -85px; 
+body{
+    background-color: rgb(179, 174, 174) ;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 60px;  
 }
-
 
 .side-block {
     
@@ -27,6 +27,11 @@ form{
 
 .homeBtn{
     width:15px;
+}
+
+.cse .gsc-control-cse,
+.gsc-control-cse {
+    background-color:  rgb(179, 174, 174) !important;
 }
 
 /* Styling for contents of HomePage */
@@ -64,29 +69,38 @@ a:hover {
 }
 
 .title-video{
-    width: 265px;
-    text-overflow: ellipsis;
+
+    width:340px;
+    text-align: center;
+
+} 
+.video{
+    text-align: center;
+  
 }
 
-.video {
-    border : 1px solid black;
-    margin: 10px;
-    padding:14px;
-    display: inline-table;
-    /* height:340px; */
-}
+ .overall{
+    margin-right: 25px;
+    display: inline-table; 
+    margin-bottom : 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-/* Modal Search result Display Styling */
-.result{
-    font-size: 15px;
-}
+ }
 
-.result-title{
-    color: blue;
-}
-
-.url{
-     color: green;
+  div.video:hover {
+    border: 1px solid black;
+  }
+  
+  footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 60px;
+    padding: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    background-color:rgb(49, 48, 48);
+    color:white;
 }
 
 /* Styling - APOD */
@@ -103,7 +117,6 @@ a:hover {
     font-weight: normal;
     font-size: 20px;
 }
-
 
 /* Styling - Near Earth Objects */
 
@@ -165,7 +178,6 @@ a:hover {
     .homeBtn{
         width:15px;
     }
-
     }
 
 
@@ -181,10 +193,17 @@ a:hover {
     }
 }
 
- @media screen and  (max-width: 800px) {
-    form{
-         width:100%;
-         margin-top: -25px; 
-     } 
-  } 
+@media screen and  (max-width: 440px) {
+    .title-video{
+        width:280px;
+    
+    } 
+    
+     .overall{
+     margin-bottom : 20px;
+     }
+}
+
+ 
   
+ 

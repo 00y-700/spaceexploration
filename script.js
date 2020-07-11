@@ -2,29 +2,20 @@ var spaceMission = $(".spaceMission");
 var mainBlock = $(".main-block");
 var title= $(".title");
 
+
 function homePage(){
 
     var videoVal = 0;
+   
     $(document).ready(function () {
-        
-        $('.modal').modal();
-
+  
         var divMain = $("<div class='homePageContent'>")
-        var homePageContent = $("<p class='homePageTitle' style='font-size: 20px; font-weight: bold; padding:10px'>");
+        var homePageContent = $("<p class='homePageTitle' style='font-size: 20px; font-weight: bold;'>");
         homePageContent.text("Top Stories");
         divMain.append(homePageContent);
  
-        var div = $("<form>");
-      
-        var input = $("<input type='text'  id='search' name='Textsearch'>");
-        var button = $("<a href='#modal1' class='btn modal-trigger searchBtn'> <i class='material-icons'>search</i>");
-        div.append(input).append(button);
-        homePageContent.append(div);
-        divMain.append(div);
-        mainBlock.append(divMain);
-
         var hrefValue =[];
-        var searches = ["Nasa Space Mission", "Satellite Launch", "Perseverance rover", "Mars", "Mars Rover", "Solar System", "Galaxy", "Asteroids"];
+        var searches = ["Nasa Space Mission", "Satellite Launch", "Perseverance rover", "Mars", "Mars Rover", "Solar System", "Galaxy"];
 
         var randomSearch = Math.floor(Math.random() * (searches.length));
         console.log(searches[randomSearch]);
@@ -36,7 +27,7 @@ function homePage(){
           success: function (response) {
     
           for(var i = 0 ; i<6; i++){
-        //   debugger
+
              var href= response.collection.items[i].href;
              hrefValue.push(href);
           }
@@ -51,14 +42,22 @@ function homePage(){
                 if(response1[k].endsWith("~orig.mp4")){
                
                 var lastInstance = response1[k].lastIndexOf("/");
-                var title = response1[k].slice(36,lastInstance);
-
+                var titleWithSlash = response1[k].slice(36,lastInstance);
+                const searchRegExp = /_/g;
+                const replaceWith = ' ';
+                var title = titleWithSlash.replace(searchRegExp, replaceWith);
+                // width="320" height="240"
+                // style="overflow-x:auto;
                 var video = function (k) {
-                    return ('<div class="video video-container" style="overflow-x:auto;>' +
-                        '<p class="title-video" >' + title + '</p>' + '<video class="responsive-video" width="320" height="240" controls>' +
+
+                  return (
+                       '<div class="overall">'+
+                        '<div class= "video">'+
+                        '<video width = "320" height = "240" controls>' +
                         '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
-      
-                        '</div>');
+                        '</div>'+
+                        '<p class="title-video" >' + title + '</p>' +
+                         '</div>');
                     }
                     
                     divMain.append(video(k));
@@ -72,44 +71,6 @@ function homePage(){
         }
     }
 });
-
-
-  $(".searchBtn").on("click", function(event){
-    
-     console.log("Received the hjghj click");
-     event.preventDefault();
-     var inputVal = $("input:text").val().trim();
-     console.log(inputVal);
-     if(inputVal != ""){
-          $("#modal1").show();
-        
-          var APIKey = "fb7ea89c26de6962a04a6bdfdf2764d1";
-
-          var URL = "https://cors-anywhere.herokuapp.com/http://api.serpstack.com/search?access_key="  + APIKey + "&query=" + inputVal;
-          console.log(URL);
-          var result = '';
-        $.ajax({
-          
-          url: URL,
-          contentType: 'application/json',
-          success: function (serpResponse) {
-                serpResponse.organic_results.forEach(res => {
-                  result = `
-                      <a href='${res.url}' target=_blank><h4 class = 'result-title'>${res.title} </h4></a>
-                      <p class = 'result url'>${res.url}</p> 
-                      <p class = 'result snippet'>${res.snippet}</p>`
-                $(".searchContent").append(result);
-              });
-              }
-        });
-      }else{
-        $("#modal1").hide();
-        $("input:text").val("Search here");
-        $("#search").on("click", function(){
-          $("input:text").val("");
-        });
-      }
-  });
 });
 }
 
@@ -130,7 +91,7 @@ $(document).ready(function () {
     event.preventDefault();
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
-    
+    $('#cse').empty();
     var apod = $(".apod").text("Quote Generator");
     var quote = $("<div id=quoteDisplay>");
     var quoteBtn = $("<button class= 'btn quoteBtn'>Gimme More</button>")
@@ -166,14 +127,12 @@ $(".localHubbleViewBtn").on("click", function(event){
     event.preventDefault();
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
-    
+    $('#cse').empty();
     var hubbleView = $(".localHubbleView").text("Live Hubble View");
     var hubbleWindow = $("<div id=hubbleWindow>");
     var hubbleTitle = $("<div class='hubbleTitle'></div>");
     var hubbleImage = $("<img class='responsive-img hubbleImage'>");
     var hubbleDescription = $("<div class='hubbleDescription'></div>");
-
-    
 
     var queryURL = "https://cors-anywhere.herokuapp.com/http://hubblesite.org/api/v3/external_feed/st_live?sort=-pub_date";
 
@@ -200,7 +159,7 @@ $(".newEarthObjectsBtn").on("click", function(event){
     $(".mainBlock-Contents").empty();
   
     $(".nearEarthObjects").empty();
-
+    $('#cse').empty();
     var today = moment().format("YYYY-MM-DD");
     console.log(today);
     var nearEarthURL = "https://api.nasa.gov/neo/rest/v1/feed?start_date="+ today + "&end_date=" + today + "END_DATE&api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ";
@@ -250,9 +209,10 @@ $(".marsWeatherBtn").on("click", function(event){
     event.preventDefault();
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
-  
+    $('#cse').empty();
+   
     var marsWeather = $(".marsWeather").text("Mars Weather");
-    
+
     var queryURL = "https://api.nasa.gov/insight_weather/?api_key=unepUpoJglDuNOxtOuPToAdKApZ40RRSvfwIHto6&feedtype=json&ver=1.0";
     var weatherImage = $("<div><iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe><br><a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>List of Current Humans on Mars</a>");
     marsWeather.append(weatherImage)
@@ -264,7 +224,7 @@ $(".spaceInfoBtn").on("click", function(event){
    
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty(); 
-    
+    $('#cse').empty();
     var spaceInfo = $(".spaceInfo").text("Planet Information");
     var div = $("<div id='spaceInfoContent'>");
     var spaceContent = $("<div id='spaceContent'>");
@@ -328,14 +288,9 @@ $(document).on("click", 'ul a', function(event){
         if($('div a').hasClass('active')){
             $(".side-block").empty();
         }
-    // }else{
-    //     if($('div a').hasClass('active')){
-    //         $(".side-block");
-    //     }
+
       }
   
 });
-
-
 
 homePage();
