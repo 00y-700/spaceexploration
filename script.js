@@ -220,6 +220,65 @@ $(".marsWeatherBtn").on("click", function(event){
     marsWeather.append(weatherImage)
 });
 
+// Photo of the Day
+$(".photoBtn").on("click", function(event){
+    event.preventDefault();
+    $(".homePageContent").empty();
+    $(".mainBlock-Contents").empty();
+    $('#cse').empty();
+  
+    var nasaPhoto = $(".photo");
+    var br = $("<br>");
+    var formDiv = $("<div>").addClass("apodForm");
+    var titleDiv = $("<div>").addClass("titleDiv").css("margin-top", "30px");
+    var displayDiv = $("<div>").addClass("displayDiv");
+    var imgActual = $("<img>").attr("id", "imgActual").attr("src", "").attr("alt", "apod");
+    var formActual = $("<form>");
+    var par1 = $("<p>").text("Astronomy Photo of the Day started in July of 1995.");
+    var par2 = $("<p>").text("Input a date! Please use format of YYYY-MM-DD");
+    var inputData = $("<input>").attr("id", "selectedDate").attr("type", "text").attr("placeholder", "ex: 2012-03-28");
+    var photoSearchBtn = $("<button>").addClass("photoSearchBtn").text("Search Date");
+    var bigForm = formDiv.append(formActual);
+    bigForm.append(par1);
+    bigForm.append(par2);
+    bigForm.append(inputData);
+    bigForm.append(photoSearchBtn);
+    nasaPhoto.append(bigForm);
+    nasaPhoto.append(titleDiv);
+    nasaPhoto.append(displayDiv);
+    
+    
+   
+    $(".photoSearchBtn").on("click", function(event){
+    var selectedDate = document.getElementById("selectedDate").value;
+      console.log(selectedDate);
+  
+      var photoURL = "https://api.nasa.gov/planetary/apod?api_key=6oFKRPYlitRe8khoY4zxJVrqOqD8GjisXLnWf2PJ&date=" + selectedDate + "&"
+      console.log(photoURL);
+  
+      $.ajax({
+          url: photoURL,
+          method: "GET"
+      }).then(function(response) {
+          displayDiv.empty();
+          console.log(response);
+          var imgResponse = response.url;
+          console.log(imgResponse);
+          var titlePhoto = response.title;
+          console.log(titlePhoto);
+          var explanationPhoto = response.explanation;
+          console.log(explanationPhoto);
+  
+          imgActual.attr("src", imgResponse);
+          titleDiv.append(br).append(titlePhoto);
+          displayDiv.append(br).append(imgActual);
+          displayDiv.append(br).append(explanationPhoto);
+  
+    });
+  });
+    
+  });
+
 // Space Information
 $(".spaceInfoBtn").on("click", function(event){
     event.preventDefault();
@@ -240,11 +299,15 @@ $(".spaceInfoBtn").on("click", function(event){
     var uranus = $("<a class='waves-effect waves-light btn planet-btn' data-img='photos/uranus.jpg' data-planet='Uranus'>Uranus</a>");
     var planetPic = $("<div class='planet-pic'></div>")
     var wiki = $("<div class='wikiInfo'></div>");
+    var solarDiv = $("<div></div>");
+    var solar = $(`<img class=‘responsive-img’ src=‘photos/solarsystem.png’>Source: Wikipedia.org</img>`);
 
 
     div.append(mercury).append(venus).append(earth).append(mars).append(jupiter).append(saturn).append(neptune).append(uranus);
     spaceInfo.append(div);
-    spaceInfo.append(`<img class='responsive-img' src='photos/solarsystem.png'>Source: Wikipedia.org</img>`);
+    spaceInfo.append(solarDiv);
+    solarDiv.append(solar);
+
     
     $(document).ready(function() {
         
@@ -254,7 +317,7 @@ $(".spaceInfoBtn").on("click", function(event){
             console.log($(this).attr("data-img"))
             var planetImg = $(this).attr("data-img")
             var Wikiurl = `http://en.wikipedia.org/w/api.php?format=json&exintro=True&action=query&titles=${planet}&prop=extracts&explaintext=True&origin=*`;
-          
+            solarDiv.empty();
             spaceInfo.append(spaceContent);
             spaceContent.append(planetPic)
             spaceContent.append(wiki);
