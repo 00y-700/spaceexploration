@@ -201,8 +201,8 @@ a:hover {
         width:270px;
     } 
 }
-    @media screen and  (max-width: 320px) {
-        div.overall{
-            margin-left: -20px ; 
-        }
-    } 
+@media screen and  (max-width: 320px) {
+    div.overall{
+        margin-left: -20px ; 
+    }
+} 
