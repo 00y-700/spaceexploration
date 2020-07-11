@@ -12,8 +12,6 @@ function createSearch(){
                    '<div class="gcse-search"></div>'+
                    '</div>');
                   }
-  // var div = $('</div>');
-  // cse.append(src).append(gcseSearch).append(div);
   divMain.append(cse);
   mainBlock.append(divMain);
 }
@@ -60,8 +58,6 @@ function homePage(){
                 const searchRegExp = /_/g;
                 const replaceWith = ' ';
                 var title = titleWithSlash.replace(searchRegExp, replaceWith);
-                // width="320" height="240"
-                // style="overflow-x:auto;
                 var video = function (k) {
 
                      return (
@@ -88,7 +84,7 @@ function homePage(){
 });
 }
 
-// APOD Button Click
+// Home Button Click
 $(document).ready(function () {
 
    $('.sidenav').sidenav();
@@ -101,7 +97,8 @@ $(document).ready(function () {
 
    });
 
-   $(".apodBtn").on("click",function (event) {
+   // APOD Button Click
+$(".apodBtn").on("click",function (event) {
     event.preventDefault();
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
@@ -245,11 +242,11 @@ $(".photoBtn").on("click", function(event){
     var br = $("<br>");
     var formDiv = $("<div>").addClass("apodForm");
     var titleDiv = $("<div>").addClass("titleDiv").css("margin-top", "30px");
-    var displayDiv = $("<div>").addClass("displayDiv");
+    var displayDiv = $("<div>").addClass("displayDiv").attr("style", "font-weight:normal; font-size: 16px;");
     var imgActual = $("<img>").attr("id", "imgActual").attr("src", "").attr("alt", "apod");
     var formActual = $("<form>");
-    var par1 = $("<p>").text("Astronomy Photo of the Day started in July of 1995.");
-    var par2 = $("<p>").text("Input a date! Please use format of YYYY-MM-DD");
+    var par1 = $("<p>").attr("style", "font-size: 20px;").text("Astronomy Photo of the Day started in July of 1995.");
+    var par2 = $("<p>").attr("style", "font-size: 17px;").text("Input a date! Please use format of YYYY-MM-DD");
     var inputData = $("<input>").attr("id", "selectedDate").attr("type", "text").attr("placeholder", "ex: 2012-03-28");
     var photoSearchBtn = $("<button>").addClass("photoSearchBtn").text("Search Date");
     var bigForm = formDiv.append(formActual);
@@ -287,6 +284,7 @@ $(".photoBtn").on("click", function(event){
           titleDiv.append(br).append(titlePhoto);
           displayDiv.append(br).append(imgActual);
           displayDiv.append(br).append(explanationPhoto);
+   
   
     });
   });
