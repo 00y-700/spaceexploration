@@ -173,18 +173,18 @@ $(".newEarthObjectsBtn").on("click", function(event){
         var nameFromEarth = (response.near_earth_objects[today][0].name);
         console.log(nameFromEarth);
         var sizeFromEarth = (response.near_earth_objects[today][0].estimated_diameter.feet.estimated_diameter_max);
-        console.log(sizeFromEarth);
         var sizeFixed = sizeFromEarth.toFixed(2);
         console.log(sizeFixed);
         var milesFromEarth = (response.near_earth_objects[today][0].close_approach_data[0].miss_distance.miles);
-        console.log(milesFromEarth);
         var milesFixed = parseFloat(milesFromEarth).toFixed(2);
         console.log(milesFixed);
         var hitEarth = (response.near_earth_objects[today][0].is_potentially_hazardous_asteroid);
         console.log(hitEarth);
+        var moreInfo = (response.near_earth_objects[today][0].nasa_jpl_url)
+        console.log(moreInfo);
 
         var nearEarthObjects = $(".nearEarthObjects");
-        nearEarthObjects.append($("<h2>").text("Nearest Asteroid to Earth!").css("color", "red"));
+        nearEarthObjects.append($("<h1>").text("Nearest Asteroid to Earth!").css("text-decoration", "underline"));
         nearEarthObjects.append($("<h3>").text("What is this Asteroid's Name?"));
         nearEarthObjects.append(nameFromEarth);
         nearEarthObjects.append($("<h3>").text("How big is " + nameFromEarth + "?"));
@@ -199,6 +199,8 @@ $(".newEarthObjectsBtn").on("click", function(event){
         } else if (hitEarth =! false) {
           nearEarthObjects.append($("<h2>").text("Potentially. Let's keep an eye in the sky!"))
         };
+
+        nearEarthObjects.append($("<a>").attr("href", moreInfo).attr("target", "blank").text("Click here for more information on " + nameFromEarth).css("color", "rgb(77, 182, 172)"));
         
       });
     
