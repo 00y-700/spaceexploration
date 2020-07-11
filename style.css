@@ -110,6 +110,12 @@ a:hover {
     font-weight: normal;
 }
 
+#imgActual {
+    width: auto ;
+    max-width: 100% ;
+    height: auto ;
+  }
+
 /* Styling - Local Hubble View */
 .hubbleDescription {
     padding: 1%;
