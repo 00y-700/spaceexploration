@@ -69,18 +69,21 @@ I want to know if any asteroids are going to hit or pass near by the pale blue d
 ## Technologies Used
 * Technologies used: HTML, CSS, Materialize CSS, Javascript, JQuery. Used Nasa and Wikipedia APIs (and Moment.js) for getting the relevant information.
 
-![Frame](Frame.jpg)
-![HomePage](photos/HomePage.jpg)
-![HubbleView](photos/LiveHubbleView.jpg)
-![MarsWeather](photos/MarsWeather.jpg)
-![NasaPhotos](photos/NasaPhotos.jpg)
-![NearEarthObjects](photos/NearEarthObjects.png)
-![MobileHomePage](photos/MobileHomePage.jpg)
-![PlanetInformation](photos/PlanterInformation.png)
-![QuoteGenerator](photos/QuoteGenerator.png)
-![MobileNasaPhoto](photos/MobileNasaPhoto.png)
-![MobileLiveHubbleView](photos/MobileLiveHubbleView.png)
-![MobileNearEarthObject](photos/MobileNearEarthObject.png)
-![MobileMarsWeather](photos/MobileMarsWeather.png)
-![MobilePlanterInformation](photos/MobilePlanterInformation.png)
-![MobileQuoteGenerator](photos/MobileQuoteGenerator.png)
+## Screenshots
+
+<p style ="text-align:center;">
+<img src="Frame.jpg" width="300" alt= "Frame" height="350"/>
+<img src="photos/HomePage.jpg"  width="300" alt="Home Page" height="350"/>
+<img src="photos/LiveHubbleView.jpg" width="300" alt="Live Hubble View" height="350"/>
+<img src="photos/MarsWeather.jpg"  width="300" alt="Mars Weather" height="350"/>
+<img src="photos/NasaPhotos.jpg" width="300" alt= "Nasa Photos" height="350"/>
+<img src="photos/NearEarthObjects.png"  width="300" alt="Near Earth Objects" height="350"/>
+<img src="photos/PlanetInformation.png" width="300" alt="Planet Information" height="350"/>
+<img src="photos/QuoteGenerator.png"  width="300" alt="Quote Generator" height="350"/>
+<img src="photos/MobileNasaPhoto.png"  width="300" alt="Mobile Nasa Photo" height="350"/>
+<img src="photos/MobileLiveHubbleView.jpg" width="300" alt="Mobile Live Hubble View" height="350"/>
+<img src="photos/MobileNearEarthObject.png"  width="300" alt="Mobile Near Earth Objects" height="350"/>
+<img src="photos/MobileMarsWeather.png" width="300" alt= "Mobile Mars Weather" height="350"/>
+<img src="photos/MobilePlanetInformation.png"  width="300" alt="Mobile Planet Information" height="350"/>
+<img src="photos/MobileQuoteGenerator.png" width="300" alt="Mobile Quote Generator" height="350"/>
+</p>
