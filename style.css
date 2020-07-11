@@ -78,20 +78,12 @@ a:hover {
 
 } 
 .video{
-<<<<<<< HEAD
- text-align: center;
-}
-
- div.overall{
- 
-=======
     text-align: center;
   
 }
 
  .overall{
     margin-right: 25px;
->>>>>>> 71f7c2ccb08e2d3a9b88a50232e7aed82f926032
     display: inline-table; 
     margin-right: 20px;
     margin-bottom : 20px;
