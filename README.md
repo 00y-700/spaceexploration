@@ -59,8 +59,14 @@ I want to know if any asteroids are going to hit or pass near by the pale blue d
 
 ## Challenges Faced
 
-* 
+* Always API call resulted in CORS error. 
+* For making video more responsive and appealing for the eyes.
+* While implementing Search engine for homepage.
+* Extracting required contents from the response especially while making two api calls for the same.
+* Successes: Overcome all the challenges faced by knowledge sharing and also by researching online with some serious Google Fu.
 
-## Refrences
+
+## Technologies Used
+* Technologies used: HTML, CSS, Materialize CSS, Javascript, JQuery. Used Nasa and Wikipedia APIs (and Moment.js) for getting the relevant information.
 
 ![Frame](Frame.jpg)
