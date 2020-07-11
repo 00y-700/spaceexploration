@@ -1,19 +1,33 @@
 var spaceMission = $(".spaceMission");
 var mainBlock = $(".main-block");
 var title= $(".title");
+var divMain;
 
+function createSearch(){
+ divMain = "";
 
+  divMain = $("<div class='homePageContent'>")
+  var cse = function(){return('<div id="cse">'+
+                   '<script async src="https://cse.google.com/cse.js?cx=013649756465046175856:c4d0huhemaw"></script>'+
+                   '<div class="gcse-search"></div>'+
+                   '</div>');
+                  }
+  // var div = $('</div>');
+  // cse.append(src).append(gcseSearch).append(div);
+  divMain.append(cse);
+  mainBlock.append(divMain);
+}
 function homePage(){
 
     var videoVal = 0;
    
     $(document).ready(function () {
-  
-        var divMain = $("<div class='homePageContent'>")
-        var homePageContent = $("<p class='homePageTitle' style='font-size: 20px; font-weight: bold;'>");
+     
+        createSearch();
+        var homePageContent = $("<p class='homePageTitle' style='font-size: 20px; font-weight: bold ;  margin: 10px; padding:20px;'>");
         homePageContent.text("Top Stories");
         divMain.append(homePageContent);
- 
+       
         // var div = $("<form>");
       
         // var input = $("<input type='text'  id='search' name='Textsearch' placeholder='Search here'>");
@@ -22,6 +36,7 @@ function homePage(){
         // homePageContent.append(div);
         // divMain.append(div);
         // mainBlock.append(divMain);
+ 
 
         var hrefValue =[];
         var searches = ["Nasa Space Mission", "Satellite Launch", "Perseverance rover", "Mars", "Mars Rover", "Solar System", "Galaxy"];
@@ -69,9 +84,9 @@ function homePage(){
                     //   '</div>');
 
                      return (
-                       '<div class="overall">'+
+                       '<div class="overall"  style="margin: 10px; padding:20px;">'+
                         '<div class= "video">'+
-                        '<video width = "320" height = "240" controls>' +
+                        '<video width = "300" height = "200" controls>' +
                         '<source src=' +encodeURI(response1[k]) + ' alt = "Nasa Space Mission Video" type="video/mp4" >' +
     
                         '</div>'+
@@ -142,11 +157,11 @@ function homePage(){
 $(document).ready(function () {
 
    $('.sidenav').sidenav();
-
    $(".homeBtn").on("click", function(event){
     event.preventDefault();
     $(".homePageContent").empty();
     $(".mainBlock-Contents").empty();
+    
     homePage();
 
    });
@@ -340,19 +355,20 @@ $(document).on("click", 'ul a', function(event){
    $(this).addClass('active');
 
    const mq = window.matchMedia( "(max-width: 600px)" );
-
+   const mq1 = window.matchMedia( "(max-width: 993px)" );
    if(mq.matches){
         if($('div a').hasClass('active')){
             $(".side-block").empty();
         }
-    // }else{
-    //     if($('div a').hasClass('active')){
-    //         $(".side-block");
-    //     }
+   
+    }
+// Closes the sidenav on click
+    if(mq1.matches){
+      if($('div a').hasClass('active')){
+        $('.sidenav').sidenav('close');
+      }
     }
   
 });
-
-
 
 homePage();
