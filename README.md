@@ -69,6 +69,12 @@ I want to know if any asteroids are going to hit or pass near by the pale blue d
 ## Technologies Used
 * Technologies used: HTML, CSS, Materialize CSS, Javascript, JQuery. Used Nasa and Wikipedia APIs (and Moment.js) for getting the relevant information.
 
+## Links
+
+* https://jordanrbunnell.github.io/spaceexploration/
+* https://github.com/jordanrbunnell/spaceexploration
+
+
 ## Screenshots
 
 <p style ="text-align:center;">
@@ -81,7 +87,7 @@ I want to know if any asteroids are going to hit or pass near by the pale blue d
 <img src="photos/PlanetInformation.png" width="300" alt="Planet Information" height="350"/>
 <img src="photos/QuoteGenerator.png"  width="300" alt="Quote Generator" height="350"/>
 <img src="photos/MobileNasaPhoto.png"  width="300" alt="Mobile Nasa Photo" height="350"/>
-<img src="photos/MobileLiveHubbleView.jpg" width="300" alt="Mobile Live Hubble View" height="350"/>
+<img src="photos/MobileLiveHubbleView.png" width="300" alt="Mobile Live Hubble View" height="350"/>
 <img src="photos/MobileNearEarthObject.png"  width="300" alt="Mobile Near Earth Objects" height="350"/>
 <img src="photos/MobileMarsWeather.png" width="300" alt= "Mobile Mars Weather" height="350"/>
 <img src="photos/MobilePlanetInformation.png"  width="300" alt="Mobile Planet Information" height="350"/>
