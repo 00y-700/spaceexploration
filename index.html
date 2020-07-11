@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Space Exploration</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
  
@@ -9,6 +9,8 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
  
       <link rel="stylesheet" href="style.css">
+      <!-- Added favicon -->
+      <link rel="icon" href="photos/saturn-favicon.png" type="image">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="https://cesium.com/downloads/cesiumjs/releases/1.71/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -73,7 +75,7 @@
 
               <li> <a class="homeBtn Btn"><i class="material-icons">home</i></a></li>
 
-              <li> <a class="apodBtn Btn">Quote Generator</a></li>
+              <li><a class="photoBtn Btn">NASA Photos</a></li>
 
               <li><a class="localHubbleViewBtn Btn">Live Hubble View</a></li>
 
@@ -84,6 +86,8 @@
               <!-- <li> <a class="spaceMissionBtn Btn">Space Missions</a></li> -->
 
               <li> <a class="spaceInfoBtn Btn">Planet Information</a></li>
+
+              <li> <a class="apodBtn Btn">Quote Generator</a></li>
   
               </ul>
             </div>
@@ -92,8 +96,8 @@
           <ul class="sidenav" id="mobile-demo">
 
             <li> <a class="homeBtn Btn"><i class="material-icons">home</i></a></li>
-            
-            <li><a class="apodBtn Btn">About APOD</a></li>
+
+            <li><a class="photoBtn Btn">NASA Photos</a></li>
 
             <li><a class="localHubbleViewBtn Btn">Live Hubble View</a></li>
 
@@ -103,7 +107,9 @@
 
             <!-- <li><a class="spaceMissionBtn Btn">Space Missions</a></li> -->
 
-            <li><a class="spaceInfoBtn Btn">Space Information</a></li>
+            <li><a class="spaceInfoBtn Btn">Planet Information</a></li>
+
+            <li><a class="apodBtn Btn">Quote Generator</a></li>
           </div>
 
             <!-- <div id="cse">
@@ -115,6 +121,9 @@
      
           <div class="main-block col s12 m8 l9"> 
             <div class = "mainBlock-Contents center-align apod">
+
+            </div>
+            <div class = "mainBlock-Contents center-align photo">
 
             </div>
             <div class = "mainBlock-Contents center-align localHubbleView">
