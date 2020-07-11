@@ -21,7 +21,6 @@ body{
 .Btn{
     width:200px;
     height:50px;
-    /* padding: 15px;  */
     text-align: center;
 }
 
@@ -35,11 +34,15 @@ body{
 }
 
 /* Styling for contents of HomePage */
-.homePageContent{
-    /* border : 1px solid black; */
+/* .homePageContent{
     margin: 10px;
     padding:20px;
   
+} */
+
+.homePageTitle .overall{
+    margin: 10px;
+    padding:20px;
 }
 
 .nav-wrapper{
@@ -47,7 +50,7 @@ body{
 }
 
 .mainBlock-Contents{
-    /* background-color: rgb(255, 248, 206); */
+
     font-weight: bold;
     font-size: 22px;
     width: 96%;
@@ -82,15 +85,16 @@ a:hover {
  .overall{
     margin-right: 25px;
     display: inline-table; 
+    margin-right: 20px;
     margin-bottom : 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
  }
 
-  div.video:hover {
+   div.overall:hover {
     border: 1px solid black;
   }
-  
+   
   footer {
     position: absolute;
     bottom: 0px;
@@ -171,7 +175,6 @@ a:hover {
     .homeBtn{
         width:15px;
     }
-
 }
 
 
@@ -202,14 +205,19 @@ a:hover {
 @media screen and  (max-width: 440px) {
     .title-video{
         width:280px;
-    
     } 
-    
      .overall{
      margin-bottom : 20px;
      }
 }
 
- 
-  
- 
+@media screen and  (max-width: 370px) {
+    .title-video{
+        width:270px;
+    } 
+}
+@media screen and  (max-width: 320px) {
+    div.overall{
+        margin-left: -20px ; 
+    }
+} 
