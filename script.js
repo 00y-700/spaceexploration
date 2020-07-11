@@ -300,7 +300,7 @@ $(".spaceInfoBtn").on("click", function(event){
     var planetPic = $("<div class='planet-pic'></div>")
     var wiki = $("<div class='wikiInfo'></div>");
     var solarDiv = $("<div></div>");
-    var solar = $(`<img class=‘responsive-img’ src=‘photos/solarsystem.png’>Source: Wikipedia.org</img>`);
+    var solar = $("<img class='responsive-img' src='photos/solarsystem.png'>Source: Wikipedia.org</img>");
 
 
     div.append(mercury).append(venus).append(earth).append(mars).append(jupiter).append(saturn).append(neptune).append(uranus);
