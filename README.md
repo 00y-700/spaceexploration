@@ -59,8 +59,37 @@ I want to know if any asteroids are going to hit or pass near by the pale blue d
 
 ## Challenges Faced
 
-* 
+* Always API call resulted in CORS error. 
+* For making video more responsive and appealing for the eyes.
+* While implementing Search engine for homepage.
+* Extracting required contents from the response especially while making two api calls for the same.
+* Successes: Overcome all the challenges faced by knowledge sharing and also by researching online with some serious Google Fu.
 
-## Refrences
 
-![Frame](Frame.jpg)
+## Technologies Used
+* Technologies used: HTML, CSS, Materialize CSS, Javascript, JQuery. Used Nasa and Wikipedia APIs (and Moment.js) for getting the relevant information.
+
+## Links
+
+* https://jordanrbunnell.github.io/spaceexploration/
+* https://github.com/jordanrbunnell/spaceexploration
+
+
+## Screenshots
+
+<p style ="text-align:center;">
+<img src="Frame.jpg" width="300" alt= "Frame" height="350"/>
+<img src="photos/HomePage.jpg"  width="300" alt="Home Page" height="350"/>
+<img src="photos/LiveHubbleView.jpg" width="300" alt="Live Hubble View" height="350"/>
+<img src="photos/MarsWeather.jpg"  width="300" alt="Mars Weather" height="350"/>
+<img src="photos/NasaPhotos.jpg" width="300" alt= "Nasa Photos" height="350"/>
+<img src="photos/NearEarthObjects.png"  width="300" alt="Near Earth Objects" height="350"/>
+<img src="photos/PlanetInformation.png" width="300" alt="Planet Information" height="350"/>
+<img src="photos/QuoteGenerator.png"  width="300" alt="Quote Generator" height="350"/>
+<img src="photos/MobileNasaPhoto.png"  width="300" alt="Mobile Nasa Photo" height="350"/>
+<img src="photos/MobileLiveHubbleView.png" width="300" alt="Mobile Live Hubble View" height="350"/>
+<img src="photos/MobileNearEarthObject.png"  width="300" alt="Mobile Near Earth Objects" height="350"/>
+<img src="photos/MobileMarsWeather.png" width="300" alt= "Mobile Mars Weather" height="350"/>
+<img src="photos/MobilePlanetInformation.png"  width="300" alt="Mobile Planet Information" height="350"/>
+<img src="photos/MobileQuoteGenerator.png" width="300" alt="Mobile Quote Generator" height="350"/>
+</p>
